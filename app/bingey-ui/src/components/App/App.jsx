@@ -1,4 +1,4 @@
-import logo from 'logo.svg';
+import logo from 'resources/logo/BingeyLogo_White.svg';
 import 'components/App/App.css';
 
 function App() {
