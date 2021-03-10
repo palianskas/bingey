@@ -1,20 +1,49 @@
-import logo from 'resources/logo/BingeyLogo_White.svg';
-import 'components/App/App.css';
+import {
+  createMuiTheme,
+  colors,
+  ThemeProvider,
+  Paper,
+} from '@material-ui/core';
 
-function App() {
+import { NavigationAppBar } from 'components/Navigation/Appbar/Appbar';
+
+export const App = () => {
+  const theme = createMuiTheme({
+    palette: {
+      // grey seems to work best, but color makes it pop more
+      primary: {
+        light: colors.indigo[400],
+        main: colors.indigo[600],
+        dark: colors.grey[800],
+      },
+      secondary: {
+        light: colors.grey[300],
+        main: colors.grey[400],
+        dark: colors.grey[500],
+      },
+    },
+    overrides: {
+      MuiPaper: {
+        root: {
+          backgroundColor: colors.grey[900],
+          color: 'white',
+        },
+      },
+    },
+  });
+
+  // technically should set colors to default dark theme. doesnt work
+  // const theme = createMuiTheme({
+  //   palette: {
+  //     type: 'dark',
+  //   },
+  // });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
+    <ThemeProvider theme={theme}>
+      <header>
+        <NavigationAppBar title="Bingey" />
       </header>
-    </div>
+    </ThemeProvider>
   );
-}
-
-export default App;
+};
