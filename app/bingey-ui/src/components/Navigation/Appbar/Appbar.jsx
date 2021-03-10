@@ -78,7 +78,7 @@ export const NavigationAppBar = ({ title }) => {
           >
             <MenuIcon />
           </IconButton>
-          <img src={Logo} className={classes.logo} alt={'logo'} />
+          <img src={Logo} className={classes.logo} alt={title} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
