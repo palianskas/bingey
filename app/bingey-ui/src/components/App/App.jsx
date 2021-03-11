@@ -34,7 +34,7 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <header>
-        <NavigationAppBar title="Bingey" />
+        <NavigationAppBar title='Bingey' />
       </header>
     </ThemeProvider>
   );
