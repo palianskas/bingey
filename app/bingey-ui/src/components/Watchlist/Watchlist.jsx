@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, Button } from '@material-ui/core';
@@ -45,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
 export const Watchlist = ({ titles }) => {
   const classes = useStyles();
 
+  const handleAddTitle = () => {
+    console.log(titles.length);
+    titles = [...titles, { name: 'new title name' }];
+    console.log(titles.length);
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -57,6 +63,7 @@ export const Watchlist = ({ titles }) => {
           size='large'
           className={classes.addTitleHeaderButton}
           endIcon={<AddIcon />}
+          onClick={handleAddTitle}
         >
           Add title
         </Button>
