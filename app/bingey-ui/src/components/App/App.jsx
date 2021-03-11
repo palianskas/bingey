@@ -28,12 +28,8 @@ export const App = () => {
 
   return (
     <>
-      <header>
-        <NavigationAppBar title='Bingey' />
-      </header>
-      <body>
-        <Watchlist titles={data} />
-      </body>
+      <NavigationAppBar title='Bingey' />
+      <Watchlist titles={data} />
     </>
   );
 };
