@@ -1,9 +1,9 @@
-import { NavigationAppBar } from 'components/Navigation/Appbar/Appbar';
+import { Navigation } from 'components/Navigation/Navigation';
 
 export const App = () => {
   return (
     <header>
-      <NavigationAppBar title='Bingey' />
+      <Navigation title='Bingey' drawerWidth='240' />
     </header>
   );
 };
