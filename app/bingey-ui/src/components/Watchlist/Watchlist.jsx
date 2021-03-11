@@ -45,10 +45,12 @@ const useStyles = makeStyles((theme) => ({
 export const Watchlist = ({ titles }) => {
   const classes = useStyles();
 
+  const [titleData, setTitleData] = useState(titles);
+
   const handleAddTitle = () => {
-    console.log(titles.length);
-    titles = [...titles, { name: 'new title name' }];
-    console.log(titles.length);
+    console.log(titleData.length);
+    setTitleData([...titleData, { name: 'new title name' }]);
+    console.log(titleData.length);
   };
 
   return (
