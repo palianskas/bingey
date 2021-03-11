@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    cursor: 'pointer',
   },
   addTitleIcon: {
     height: 'unset',
@@ -48,9 +49,8 @@ export const Watchlist = ({ titles }) => {
   const [titleData, setTitleData] = useState(titles);
 
   const handleAddTitle = () => {
-    console.log(titleData.length);
-    setTitleData([...titleData, { name: 'new title name' }]);
-    console.log(titleData.length);
+    document.getElementById('searchBar').focus();
+    setTitleData((titleData) => [...titleData, { name: 'new title name' }]);
   };
 
   return (
@@ -71,7 +71,7 @@ export const Watchlist = ({ titles }) => {
         </Button>
       </div>
       <Grid container spacing={2}>
-        {titles.map((title) => {
+        {titleData.map((title) => {
           return (
             <Grid item xs={6} sm={4} md={3} xl={2}>
               <Paper className={classes.paper}>{title.name}</Paper>
@@ -79,7 +79,10 @@ export const Watchlist = ({ titles }) => {
           );
         })}
         <Grid item xs={6} sm={4} md={3} xl={2}>
-          <Paper className={clsx(classes.paper, classes.addTitleCard)}>
+          <Paper
+            onClick={handleAddTitle}
+            className={clsx(classes.paper, classes.addTitleCard)}
+          >
             <AddCircleOutlineIcon className={classes.addTitleIcon} />
           </Paper>
         </Grid>
