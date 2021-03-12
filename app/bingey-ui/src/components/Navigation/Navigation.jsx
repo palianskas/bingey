@@ -5,10 +5,10 @@ import { NavigationDrawer } from 'components/Navigation/Drawer/Drawer';
 
 const defaultProps = {
   title: 'Bingey',
-  navDrawerWidth: 240,
+  drawerWidth: 240,
 };
 
-export const Navigation = ({ title, navDrawerWidth }) => {
+export const Navigation = ({ title, drawerWidth }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -24,11 +24,11 @@ export const Navigation = ({ title, navDrawerWidth }) => {
         title={title}
         isDrawerOpen={isDrawerOpen}
         onDrawerOpen={handleDrawerOpen}
-        drawerWidth={navDrawerWidth}
+        drawerWidth={drawerWidth}
       />
       <NavigationDrawer
         isOpen={isDrawerOpen}
-        width={navDrawerWidth}
+        width={drawerWidth}
         onClose={handleDrawerClose}
       />
     </>
