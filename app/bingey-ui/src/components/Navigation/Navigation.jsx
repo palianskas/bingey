@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { NavigationAppBar } from 'components/Navigation/Appbar/Appbar';
 import { NavigationDrawer } from 'components/Navigation/Drawer/Drawer';

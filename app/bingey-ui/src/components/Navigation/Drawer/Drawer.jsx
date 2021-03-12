@@ -16,9 +16,7 @@ import drawerStyles from './drawerStyle.scss';
 const defaultProps = {
   isOpen: false,
   width: 240,
-  onClose: () => {
-    console.log('default drawerClose handler');
-  },
+  onClose: () => {},
 };
 
 const useStyles = makeStyles((theme) => ({

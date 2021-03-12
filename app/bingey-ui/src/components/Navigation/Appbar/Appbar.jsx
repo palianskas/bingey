@@ -1,11 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
 import { AppBar, Toolbar, IconButton, InputBase } from '@material-ui/core';
-import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import Logo from 'resources/logo/BingeyLogo_White.svg';
+
 import appbarStyle from './appbarStyle.scss';
 
 const useStyles = makeStyles((theme) => ({
