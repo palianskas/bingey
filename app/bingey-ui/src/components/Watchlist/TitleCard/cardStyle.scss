@@ -16,3 +16,32 @@
   justify-content: center;
   align-content: center;
 }
+
+.media{
+  height: 260px;
+}
+
+.description{
+    margin-top: 5pt;
+}
+
+@media only screen and (max-width: 960px) {
+    .media{
+        height: 180px;
+    }
+    .text{
+        font-size: 12pt;
+    }
+    .text2{
+        font-size: 10pt;
+        text-align: center;
+    }
+    .right{
+        float: none;
+        text-align: center;
+    }   
+    .description{
+        font-size: 9pt;
+    }
+
+}

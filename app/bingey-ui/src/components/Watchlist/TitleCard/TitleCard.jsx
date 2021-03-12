@@ -8,15 +8,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './cardStyle.scss';
-import TitleDialog from './TitleDialog';
+//import TitleDialog from './TitleDialog';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     margin: 25,
-  },
-  media: {
-    height: 260,
+    height: 400,
   },
 });
 
@@ -43,14 +41,10 @@ export default function TitleCard({
   return (
     <Card className={classes.root}>
       <CardActionArea onClick={handleClickOpen}>
-        <CardMedia
-          className={classes.media}
-          image={image}
-          title='Movie poster'
-        />
+        <CardMedia className='media' image={image} title='Movie poster' />
         <CardContent>
           <Typography
-            className='center'
+            className='center text'
             gutterBottom
             variant='h5'
             component='h2'
@@ -58,16 +52,16 @@ export default function TitleCard({
             {title}
           </Typography>
           <Typography
-            className='inline'
+            className='inline text2'
             variant='body1'
             color='text'
             component='p'
           >
-            {upcomingItem} <span className='right'> {releaseDate}</span>
+            {upcomingItem}: <span className='right'> {releaseDate}</span>
           </Typography>
 
           <Typography
-            className='justify'
+            className='justify description'
             variant='body2'
             color='text'
             component='p'
@@ -76,7 +70,7 @@ export default function TitleCard({
           </Typography>
         </CardContent>
       </CardActionArea>
-      <TitleDialog
+      {/*<TitleDialog
         open={open}
         onClose={handleClose}
         image={image}
@@ -85,7 +79,7 @@ export default function TitleCard({
         releaseDate={releaseDate}
         description={description}
         rating={rating}
-      />
+      />*/}
     </Card>
   );
 }

@@ -6,13 +6,14 @@ import { Paper, Grid, Typography, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import AddIcon from '@material-ui/icons/Add';
 
+import TitleCard from 'components/Watchlist/TitleCard/TitleCard';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
   },
   paper: {
     aspectRatio: 5 / 7,
-    padding: theme.spacing(2),
     textAlign: 'center',
     backgroundColor: '#c4c4c4',
   },
@@ -34,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    maxWidth: 345,
+    margin: 25,
+    height: 400,
   },
   addTitleIcon: {
     height: 'unset',
@@ -61,16 +65,23 @@ export const Watchlist = ({ titles }) => {
           Add title
         </Button>
       </div>
-      <Grid container spacing={2}>
+      <Grid container spacing={0}>
         {titles.map((title) => {
           return (
             <Grid item xs={6} sm={4} md={3} xl={2}>
-              <Paper className={classes.paper}>{title.name}</Paper>
+              <TitleCard
+                title={title.name}
+                upcomingItem='2 season 3 episode'
+                releaseDate='2021 05 03'
+                description='When all people die... How do you survive? Magic story about Elena...'
+                image='https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1574144362'
+                rating='5 stars'
+              />
             </Grid>
           );
         })}
         <Grid item xs={6} sm={4} md={3} xl={2}>
-          <Paper className={clsx(classes.paper, classes.addTitleCard)}>
+          <Paper className={clsx(classes.addTitleCard)}>
             <AddCircleOutlineIcon className={classes.addTitleIcon} />
           </Paper>
         </Grid>
