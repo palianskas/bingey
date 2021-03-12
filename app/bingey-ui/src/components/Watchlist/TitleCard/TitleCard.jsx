@@ -6,7 +6,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 import 'components/Watchlist/TitleCard/cardStyle.scss';
-import TitleDialog from './TitleDialog';
 
 export default function TitleCard({ titles }) {
   const [open, setOpen] = useState(false);
@@ -41,7 +40,6 @@ export default function TitleCard({ titles }) {
           </CardContent>
         </CardActionArea>
       </Card>
-      <TitleDialog open={open} onClose={handleCloseDialog} titles={titles} />
     </div>
   );
 }
