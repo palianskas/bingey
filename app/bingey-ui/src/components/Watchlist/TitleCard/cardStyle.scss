@@ -1,8 +1,14 @@
-.right{
-    float: right;
-}
 .center{
     text-align: center;
+}
+.centerFlex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.justify{
+    text-align: justify;
 }
 
 @media only screen and (max-width: 1200px) {
