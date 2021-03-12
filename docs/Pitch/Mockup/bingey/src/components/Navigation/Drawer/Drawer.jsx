@@ -54,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   },
   content: {
@@ -82,6 +83,7 @@ export const NavigationDrawer = ({isOpen, width, onClose}) => {
             }),
             }}
         >  
+          {/* <div className={clsx({[classes.hide]: !isOpen,})}> */}
           <div className={classes.content}>
             <div className={classes.toolbar}>
               <IconButton onClick={onClose}>
