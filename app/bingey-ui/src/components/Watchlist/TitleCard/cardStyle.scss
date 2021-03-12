@@ -1,47 +1,13 @@
 .right{
     float: right;
 }
-.justify{
-    text-align: justify;
-}
 .center{
     text-align: center;
 }
-.big{
-    font-size: 180pt;
-}
-.centerFlex{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-}
 
-.media{
-  height: 260px;
-}
-
-.description{
-    margin-top: 5pt;
-}
-
-@media only screen and (max-width: 960px) {
-    .media{
-        height: 180px;
-    }
-    .text{
-        font-size: 12pt;
-    }
-    .text2{
-        font-size: 10pt;
-        text-align: center;
-    }
+@media only screen and (max-width: 1200px) {
     .right{
-        float: none;
-        text-align: center;
+    float: none;
+    display: block;
     }   
-    .description{
-        font-size: 9pt;
-    }
-
 }

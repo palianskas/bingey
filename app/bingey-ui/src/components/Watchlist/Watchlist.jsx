@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
   },
   paper: {
-    aspectRatio: 5 / 7,
     textAlign: 'center',
     backgroundColor: '#c4c4c4',
   },
@@ -35,9 +34,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    maxWidth: 345,
-    margin: 25,
-    height: 400,
   },
   addTitleIcon: {
     height: 'unset',
@@ -65,18 +61,11 @@ export const Watchlist = ({ titles }) => {
           Add title
         </Button>
       </div>
-      <Grid container spacing={0}>
-        {titles.map((title) => {
+      <Grid container spacing={3}>
+        {titles.map((titles) => {
           return (
             <Grid item xs={6} sm={4} md={3} xl={2}>
-              <TitleCard
-                title={title.name}
-                upcomingItem='2 season 3 episode'
-                releaseDate='2021 05 03'
-                description='When all people die... How do you survive? Magic story about Elena...'
-                image='https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-21a1c803fe4ff4b858de24f5c91ec57f_screen.jpg?ts=1574144362'
-                rating='5 stars'
-              />
+              <TitleCard titles={titles} />
             </Grid>
           );
         })}

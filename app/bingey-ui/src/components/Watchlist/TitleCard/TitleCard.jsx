@@ -1,85 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
 import './cardStyle.scss';
 //import TitleDialog from './TitleDialog';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-    margin: 25,
-    height: 400,
-  },
-});
-
-export default function TitleCard({
-  title,
-  upcomingItem,
-  releaseDate,
-  description,
-  image,
-  rating,
-}) {
-  const classes = useStyles();
-
+export default function TitleCard({ titles }) {
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleOpenDialog = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleCloseDialog = () => {
     setOpen(false);
   };
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea onClick={handleClickOpen}>
-        <CardMedia className='media' image={image} title='Movie poster' />
+    <Card>
+      <CardActionArea onClick={handleOpenDialog}>
+        <CardMedia
+          className='media'
+          style={{ paddingTop: '60%' }}
+          image={titles.image}
+          title='Movie poster'
+        />
         <CardContent>
-          <Typography
-            className='center text'
-            gutterBottom
-            variant='h5'
-            component='h2'
-          >
-            {title}
+          <Typography className='center' gutterBottom variant='body1'>
+            {titles.name}
           </Typography>
-          <Typography
-            className='inline text2'
-            variant='body1'
-            color='text'
-            component='p'
-          >
-            {upcomingItem}: <span className='right'> {releaseDate}</span>
+          <Typography className='inline' variant='body1' color='text'>
+            {titles.upcomingItem}:{' '}
+            <span className='right'> {titles.releaseDate}</span>
           </Typography>
 
-          <Typography
-            className='justify description'
-            variant='body2'
-            color='text'
-            component='p'
-          >
-            {description}
-          </Typography>
+          <Typography variant='body1'>Genre: {titles.genre}</Typography>
         </CardContent>
       </CardActionArea>
-      {/*<TitleDialog
-        open={open}
-        onClose={handleClose}
-        image={image}
-        title={title}
-        upcomingItem={upcomingItem}
-        releaseDate={releaseDate}
-        description={description}
-        rating={rating}
-      />*/}
     </Card>
   );
 }
