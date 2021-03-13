@@ -1,6 +1,15 @@
-.center{
-    text-align: center;
+.title{
+    margin-right: auto !important;
 }
+
+.header-container{
+  display: flex;
+}
+
+.add-button{
+  margin: 15px !important;
+}
+
 .centerFlex{
   display: flex;
   flex-wrap: wrap;

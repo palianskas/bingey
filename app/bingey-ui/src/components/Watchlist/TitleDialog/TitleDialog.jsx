@@ -10,6 +10,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 import 'components/Watchlist/TitleDialog/titleDialogStyle.scss';
+import AddIcon from '@material-ui/icons/Add';
+import { Button } from '@material-ui/core';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -29,7 +31,19 @@ export default function TitleDialog({ title, onClose, open }) {
         aria-labelledby='alert-dialog-slide-title'
         aria-describedby='alert-dialog-slide-description'
       >
-        <DialogTitle className='center'>{title.name}</DialogTitle>
+        <div className='header-container'>
+          <DialogTitle className='title'>{title.name}</DialogTitle>
+          <Button
+            variant='outlined'
+            className='add-button'
+            color='primary'
+            size='large'
+            endIcon={<AddIcon />}
+            onClick={() => {}}
+          >
+            Add title
+          </Button>
+        </div>
         <DialogContent>
           <CardMedia
             className={`center mediaDialog`}

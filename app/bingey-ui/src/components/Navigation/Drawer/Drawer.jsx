@@ -11,7 +11,7 @@ import MovieIcon from '@material-ui/icons/Movie';
 import StarsIcon from '@material-ui/icons/Stars';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import drawerStyles from './drawerStyle.scss';
+import './drawerStyle.scss';
 
 const defaultProps = {
   isOpen: false,

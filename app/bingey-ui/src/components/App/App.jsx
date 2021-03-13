@@ -1,7 +1,7 @@
 import { Navigation } from 'components/Navigation/Navigation';
 import { Watchlist } from 'components/Watchlist/Watchlist';
 
-import appStyle from './appStyle.scss';
+import './appStyle.scss';
 
 export const App = () => {
   const data = [
