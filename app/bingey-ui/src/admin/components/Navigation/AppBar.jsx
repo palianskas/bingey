@@ -7,36 +7,37 @@ import { Tab, Tabs } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import './AppBar.scss';
 
-const Header = withRouter(({ history }) => {
-  const [value, setValue] = useState(0);
+const Header = withRouter(({ history, location }) => {
+  const [value, setValue] = useState(location.pathname);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
   return (
     <div>
-      <AppBar className={'app-bar'} position="static">
+      <AppBar className={'app-bar'} position='static'>
         <Toolbar>
-          <Typography className="title" variant="h6">
+          <Typography className='title' variant='h6'>
             Admin
           </Typography>
-          <Tabs value={value} onChange={handleChange}>
+          <Tabs value={value}>
             <Tab
-              label="Users"
+              label='Users'
+              value='/admin'
               onClick={() => {
                 history.push('/admin');
+                setValue(history.location.pathname);
               }}
             />
             <Tab
-              label="Add Title"
+              label='Add Title'
+              value='/admin/add-title'
               onClick={() => {
                 history.push('/admin/add-title');
+                setValue(history.location.pathname);
               }}
             />
           </Tabs>
           <Button
-            className="app-link"
-            color="inherit"
+            className='app-link'
+            color='inherit'
             onClick={() => {
               window.open('/');
             }}

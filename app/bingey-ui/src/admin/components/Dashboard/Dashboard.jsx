@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/Navigation/AppBar';
-import UsersList from './components/UsersList';
-import TitleAdd from './components/TitleAdd';
-import UserInfo from './components/UserInfo';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from 'admin/components/Navigation/AppBar';
+import UsersList from 'admin/components/Users/UsersList';
+import TitleAdd from 'admin/components/Titles/TitleAdd';
+import UserInfo from 'admin/components/Users/UserInfo';
 
 const Dashboard = () => {
   return (
@@ -11,13 +11,13 @@ const Dashboard = () => {
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/admin">
+          <Route exact path='/admin'>
             <UsersList />
           </Route>
-          <Route path="/admin/add-title">
+          <Route path='/admin/add-title'>
             <TitleAdd />
           </Route>
-          <Route path="/admin/:id">
+          <Route path='/admin/:id'>
             <UserInfo />
           </Route>
         </Switch>

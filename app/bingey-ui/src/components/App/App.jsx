@@ -1,5 +1,8 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { NavigationAppBar } from 'components/Navigation/Appbar/Appbar';
 import { Watchlist } from 'components/Watchlist/Watchlist';
+import AdminDashboard from 'admin/components/Dashboard/Dashboard';
 
 export const App = () => {
   const data = [
@@ -28,8 +31,17 @@ export const App = () => {
 
   return (
     <>
-      <NavigationAppBar title='Bingey' />
-      <Watchlist titles={data} />
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <NavigationAppBar title='Bingey' />
+            <Watchlist titles={data} />
+          </Route>
+          <Route path='/admin'>
+            <AdminDashboard />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 };
