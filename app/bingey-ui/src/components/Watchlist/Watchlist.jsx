@@ -6,13 +6,13 @@ import { Paper, Grid, Typography, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import AddIcon from '@material-ui/icons/Add';
 
+import TitleCard from 'components/Watchlist/TitleCard/TitleCard';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
   },
   paper: {
-    aspectRatio: 5 / 7,
-    padding: theme.spacing(2),
     textAlign: 'center',
     backgroundColor: '#c4c4c4',
   },
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    aspectRatio: 5 / 7,
     cursor: 'pointer',
   },
   addTitleIcon: {
@@ -74,7 +75,7 @@ export const Watchlist = ({ titles }) => {
         {titleData.map((title) => {
           return (
             <Grid item xs={6} sm={4} md={3} xl={2}>
-              <Paper className={classes.paper}>{title.name}</Paper>
+              <TitleCard title={title} />
             </Grid>
           );
         })}
