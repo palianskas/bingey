@@ -1,5 +1,8 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Watchlist } from 'components/Watchlist/Watchlist';
+import AdminDashboard from 'admin/components/Dashboard/Dashboard';
 
 import appStyle from './appStyle.scss';
 
@@ -85,10 +88,19 @@ export const App = () => {
 
   return (
     <>
-      <Navigation title='Bingey' drawerWidth={240} />
-      <main className='content'>
-        <Watchlist titles={data} />
-      </main>
+      <Router>
+        <Switch>
+          <Route exact path='/'>
+            <Navigation title='Bingey' drawerWidth={240} />
+            <main className='content'>
+              <Watchlist titles={data} />
+            </main>
+          </Route>
+          <Route path='/admin'>
+            <AdminDashboard />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 };
