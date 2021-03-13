@@ -28,39 +28,42 @@ export const NavigationAppBar = ({
   const classes = useStyles({ drawerWidth });
 
   return (
-    <AppBar
-      position='fixed'
-      className={clsx('appBar', {
-        [classes.appBarShift]: isDrawerOpen,
-      })}
-    >
-      <Toolbar>
-        <IconButton
-          edge='start'
-          className={clsx('menuButton', {
-            ['hide']: isDrawerOpen,
-          })}
-          color='inherit'
-          aria-label='open drawer'
-          onClick={onDrawerOpen}
-        >
-          <MenuIcon />
-        </IconButton>
-        <img src={Logo} className='logo' alt={title} />
-        <div className='search'>
-          <div className='searchIcon'>
-            <SearchIcon />
+    <div className='root'>
+      <AppBar
+        position='fixed'
+        className={clsx('appBar', {
+          [classes.appBarShift]: isDrawerOpen,
+        })}
+      >
+        <Toolbar>
+          <IconButton
+            edge='start'
+            className={clsx('menuButton', {
+              ['hide']: isDrawerOpen,
+            })}
+            color='inherit'
+            aria-label='open drawer'
+            onClick={onDrawerOpen}
+          >
+            <MenuIcon />
+          </IconButton>
+          <img src={Logo} className='logo' alt={title} />
+          <div className='search'>
+            <div className='searchIcon'>
+              <SearchIcon />
+            </div>
+            <InputBase
+              id='searchBar'
+              placeholder='Search…'
+              classes={{
+                root: 'inputRoot',
+                input: 'inputBase',
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
           </div>
-          <InputBase
-            placeholder='Search…'
-            classes={{
-              root: 'inputRoot',
-              input: 'inputBase',
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
