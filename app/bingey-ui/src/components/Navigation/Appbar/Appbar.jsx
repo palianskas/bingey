@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import Logo from 'resources/logo/BingeyLogo_White.svg';
 
-import appbarStyle from './appbarStyle.scss';
+import './appbarStyle.scss';
 
 const useStyles = makeStyles((theme) => ({
   appBarShift: ({ drawerWidth }) => ({

@@ -4,7 +4,7 @@ import { Navigation } from 'components/Navigation/Navigation';
 import { Watchlist } from 'components/Watchlist/Watchlist';
 import AdminDashboard from 'admin/components/Dashboard/Dashboard';
 
-import appStyle from './appStyle.scss';
+import './appStyle.scss';
 
 export const App = () => {
   const data = [
