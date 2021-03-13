@@ -32,7 +32,7 @@ export default function TitleDialog({ title, onClose, open }) {
         <DialogTitle className='center'>{title.name}</DialogTitle>
         <DialogContent>
           <CardMedia
-            className={`center media`}
+            className={`center mediaDialog`}
             image={title.image}
             title='Poster'
           />

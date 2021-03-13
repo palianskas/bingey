@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    aspectRatio: 5 / 7,
   },
   addTitleIcon: {
     height: 'unset',
@@ -70,7 +71,7 @@ export const Watchlist = ({ titles }) => {
           );
         })}
         <Grid item xs={6} sm={4} md={3} xl={2}>
-          <Paper className={clsx(classes.addTitleCard)}>
+          <Paper className={clsx(classes.addTitleCard)} elevation={5}>
             <AddCircleOutlineIcon className={classes.addTitleIcon} />
           </Paper>
         </Grid>
