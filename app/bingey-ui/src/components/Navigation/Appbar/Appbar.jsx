@@ -1,93 +1,63 @@
 import React from 'react';
+import clsx from 'clsx';
 import { AppBar, Toolbar, IconButton, InputBase } from '@material-ui/core';
-import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import Logo from 'resources/logo/BingeyLogo_White.svg';
 
+import './appbarStyle.scss';
+
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  logo: {
-    height: '35px',
-    marginRight: 'auto',
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
+  appBarShift: ({ drawerWidth }) => ({
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    [theme.breakpoints.down('sm')]: {
+      width: 0,
     },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
+  }),
 }));
 
-export const NavigationAppBar = ({ title }) => {
-  const theme = useTheme();
-
-  const classes = useStyles(theme);
+export const NavigationAppBar = ({
+  title,
+  isDrawerOpen,
+  onDrawerOpen,
+  drawerWidth,
+}) => {
+  const classes = useStyles({ drawerWidth });
 
   return (
-    <div className={classes.root}>
-      <AppBar position='static'>
+    <div className='root'>
+      <AppBar
+        position='fixed'
+        className={clsx('appBar', {
+          [classes.appBarShift]: isDrawerOpen,
+        })}
+      >
         <Toolbar>
           <IconButton
             edge='start'
-            className={classes.menuButton}
+            className={clsx('menuButton', {
+              ['hide']: isDrawerOpen,
+            })}
             color='inherit'
             aria-label='open drawer'
+            onClick={onDrawerOpen}
           >
             <MenuIcon />
           </IconButton>
-          <img src={Logo} className={classes.logo} alt={title} />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <img src={Logo} className='logo' alt={title} />
+          <div className='search'>
+            <div className='searchIcon'>
               <SearchIcon />
             </div>
             <InputBase
+              id='searchBar'
               placeholder='Search…'
               classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
+                root: 'inputRoot',
+                input: 'inputBase',
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
