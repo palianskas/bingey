@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, Button } from '@material-ui/core';
@@ -6,13 +6,13 @@ import { Paper, Grid, Typography, Button } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import AddIcon from '@material-ui/icons/Add';
 
+import TitleCard from 'components/Watchlist/TitleCard/TitleCard';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
   },
   paper: {
-    aspectRatio: 5 / 7,
-    padding: theme.spacing(2),
     textAlign: 'center',
     backgroundColor: '#c4c4c4',
   },
@@ -34,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    aspectRatio: 5 / 7,
+    cursor: 'pointer',
   },
   addTitleIcon: {
     height: 'unset',
@@ -44,6 +46,13 @@ const useStyles = makeStyles((theme) => ({
 
 export const Watchlist = ({ titles }) => {
   const classes = useStyles();
+
+  const [titleData, setTitleData] = useState(titles);
+
+  const handleAddTitle = () => {
+    document.getElementById('searchBar').focus();
+    setTitleData((titleData) => [...titleData, { name: 'new title name' }]);
+  };
 
   return (
     <div className={classes.root}>
@@ -57,20 +66,24 @@ export const Watchlist = ({ titles }) => {
           size='large'
           className={classes.addTitleHeaderButton}
           endIcon={<AddIcon />}
+          onClick={handleAddTitle}
         >
           Add title
         </Button>
       </div>
       <Grid container spacing={2}>
-        {titles.map((title) => {
+        {titleData.map((title) => {
           return (
             <Grid item xs={6} sm={4} md={3} xl={2}>
-              <Paper className={classes.paper}>{title.name}</Paper>
+              <TitleCard title={title} />
             </Grid>
           );
         })}
         <Grid item xs={6} sm={4} md={3} xl={2}>
-          <Paper className={clsx(classes.paper, classes.addTitleCard)}>
+          <Paper
+            onClick={handleAddTitle}
+            className={clsx(classes.paper, classes.addTitleCard)}
+          >
             <AddCircleOutlineIcon className={classes.addTitleIcon} />
           </Paper>
         </Grid>
