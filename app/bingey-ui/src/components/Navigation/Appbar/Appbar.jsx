@@ -84,6 +84,7 @@ export const NavigationAppBar = ({ title }) => {
               <SearchIcon />
             </div>
             <InputBase
+              id='searchBar'
               placeholder='Search…'
               classes={{
                 root: classes.inputRoot,
