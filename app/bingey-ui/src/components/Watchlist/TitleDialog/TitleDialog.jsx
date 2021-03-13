@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
@@ -10,24 +9,16 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import 'components/Watchlist/TitleCard/cardStyle.scss';
-
-const useStyles = makeStyles({
-  media: {
-    height: 260,
-  },
-});
+import 'components/Watchlist/TitleDialog/titleDialogStyle.scss';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
-export default function TitleDialog({ titles, onClose, open }) {
+export default function TitleDialog({ title, onClose, open }) {
   const handleCloseDialog = () => {
     onClose();
   };
-
-  const classes = useStyles();
 
   return (
     <div className='center centerFlex'>
@@ -38,29 +29,24 @@ export default function TitleDialog({ titles, onClose, open }) {
         aria-labelledby='alert-dialog-slide-title'
         aria-describedby='alert-dialog-slide-description'
       >
-        <DialogTitle className='center big'>{titles.name}</DialogTitle>
+        <DialogTitle className='center'>{title.name}</DialogTitle>
         <DialogContent>
           <CardMedia
-            className={`center ${classes.media}`}
-            image={titles.image}
-            title='Movie poster'
+            className={`center media`}
+            image={title.image}
+            title='Poster'
           />
           <CardContent>
-            <Typography
-              className='inline'
-              variant='body1'
-              color='text'
-              component='p'
-            >
-              {titles.upcomingItem}: {titles.releaseDate}
+            <Typography variant='body1' color='text' component='p'>
+              {title.upcomingItem}: {title.releaseDate}
             </Typography>
 
-            <Typography className='inline' variant='body1' color='text'>
-              Rating: {titles.rating}
+            <Typography variant='body1' color='text'>
+              Rating: {title.rating}
             </Typography>
           </CardContent>
           <DialogContentText id='alert-dialog-slide-description'>
-            {titles.description}
+            {title.description}
           </DialogContentText>
         </DialogContent>
       </DialogUI>
