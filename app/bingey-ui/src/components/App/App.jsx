@@ -1,5 +1,7 @@
-import { NavigationAppBar } from 'components/Navigation/Appbar/Appbar';
+import { Navigation } from 'components/Navigation/Navigation';
 import { Watchlist } from 'components/Watchlist/Watchlist';
+
+import appStyle from './appStyle.scss';
 
 export const App = () => {
   const data = [
@@ -83,8 +85,10 @@ export const App = () => {
 
   return (
     <>
-      <NavigationAppBar title='Bingey' />
-      <Watchlist titles={data} />
+      <Navigation title='Bingey' drawerWidth={240} />
+      <main className='content'>
+        <Watchlist titles={data} />
+      </main>
     </>
   );
 };
