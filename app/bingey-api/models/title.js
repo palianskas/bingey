@@ -34,7 +34,10 @@ const titleSchema = new Schema(
       },
     ],
   },
-  { timestamps: true }
+  {
+    _id: false,
+    timestamps: true,
+  }
 );
 
 const Title = mongoose.model('Title', titleSchema);
