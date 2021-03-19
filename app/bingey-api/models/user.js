@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
-    _id:{
-        type: String,
-        required: true,
-    },
     name: {
         type: String,
         required: true,
@@ -30,21 +26,16 @@ const userSchema = new Schema({
 		{
             titleId: {
                 type: Schema.Types.ObjectId,
-                ref: 'Titles',
+                ref: 'Title',
             },
-            name: {
-                type: String,
-            },
+            name: String,
 			imgUrl: {
                 type: String,
             },
 		}
 	]
 },
-  {
-    _id: false,
-    timestamps: true,
-  }
+  { timestamps: true, }
 );
 
 const User = model('User', userSchema);
