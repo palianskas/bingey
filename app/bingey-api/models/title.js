@@ -6,6 +6,7 @@ const titleSchema = new Schema(
       type: String,
       required: true,
     },
+    isCustom: Boolean,
     name: {
       type: String,
       required: true,
