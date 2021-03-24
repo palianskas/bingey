@@ -4,6 +4,6 @@ const titleController = require('$/controllers/titleController.js');
 
 const router = express.Router();
 
-router.route('titles').post(titleController.postTitle);
+router.post('/titles', titleController.validate('createTitle'), titleController.createTitle);
 
 module.exports = router;
