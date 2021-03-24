@@ -31,6 +31,7 @@ const validateTitle = (title) => {
 
 const postTitle = (req, res) => {
   let title = {
+    isCustom: true,
     name: req.body.name,
     releaseDate: req.body.releaseDate,
     directors: req.body.directors,
