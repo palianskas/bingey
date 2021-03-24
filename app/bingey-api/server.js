@@ -12,8 +12,6 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
   console.info('connected to database');
 });
 
-// titleController.postTitle();
-
 const app = express();
 
 app.use(cors());
