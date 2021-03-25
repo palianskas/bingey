@@ -1,4 +1,4 @@
-const { mongoose, Schema } = require('mongoose');
+const { model, Schema } = require('mongoose');
 
 const titleSchema = new Schema(
   {
@@ -20,20 +20,19 @@ const titleSchema = new Schema(
     directors: [String],
     genres: [String],
     seasonCount: Number,
+    seasonEpisodes: [Number],
+    latestEpisode: {
+      season: Number,
+      number: Number,
+      releaseDate: Date,
+    },
     upcomingEpisode: {
       season: Number,
       number: Number,
       releaseDate: Date,
     },
     plot: String,
-    similars: [
-      {
-        similarId: {
-          type: Schema.Types.ObjectId,
-          ref: 'Title',
-        },
-      },
-    ],
+    similars: [String],
   },
   {
     _id: false,
@@ -41,6 +40,6 @@ const titleSchema = new Schema(
   }
 );
 
-const Title = mongoose.model('Title', titleSchema);
+const Title = model('Title', titleSchema);
 
 module.exports = Title;
