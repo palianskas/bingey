@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 
-const titleRoutes = require('$/routes/title');
+//const titleRoutes = require('./routes/title');
+const searchRoutes = require('./routes/search');
 
 const { MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
 const uri = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.5naxt.mongodb.net/bingey?retryWrites=true&w=majority`;
@@ -16,8 +17,10 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err)
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
-app.use('/titles', titleRoutes);
+//app.use('/titles', titleRoutes);
+app.use('/', searchRoutes);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.info(`server has started on ${PORT}`));
