@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import clsx from 'clsx';
 import { useFormContext } from 'react-hook-form';
 
 import {
@@ -8,6 +7,7 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
+  Typography,
 } from '@material-ui/core';
 
 import dialogFormStyle from './dialogFormStyle.scss';
@@ -25,29 +25,31 @@ export const DialogForm = ({ onFormSubmit }) => {
 
   return (
     <DialogContent>
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={isMovie}
-            onChange={handleChangeType}
-            name='isMovieCheckbox'
-            color='primary'
-          />
-        }
-        label='Create new movie'
-      />
       <form onSubmit={handleSubmit(onFormSubmit)} id='dialogForm'>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={isMovie}
+              onChange={handleChangeType}
+              color='primary'
+            />
+          }
+          name='isMovie'
+          inputRef={register}
+          label='Create new movie'
+        />
+        <br />
         <TextField
           label='ID'
-          name='id'
+          name='_id'
           autoComplete
           autoFocus
+          fullWidth
           inputRef={register({
             required: 'ID is required',
           })}
           error={errors.id}
           helperText={errors.id ? errors.id.message : ''}
-          className='smallInput'
         />
         <TextField
           label='Name'
@@ -103,7 +105,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           }
         />
         {!isMovie && (
-          <FormGroup row className={'inputGroup'}>
+          <FormGroup row className='inputGroup'>
             <TextField
               label='Season count'
               name='seasonCount'
@@ -143,38 +145,130 @@ export const DialogForm = ({ onFormSubmit }) => {
                 errors.seasonEpisodes ? errors.seasonEpisodes.message : ''
               }
             />
-            <TextField
-              helperText='Latest episode release date'
-              name='latestReleaseDate'
-              type='date'
-              className='smallInput'
-              inputRef={register({
-                required: 'Latest release date is  is required',
-              })}
-              error={errors.latestReleaseDate}
-              helperText={
-                errors.latestReleaseDate
-                  ? errors.latestReleaseDate.message
-                  : 'Latest episode release date'
-              }
-              margin='normal'
-            />
-            <TextField
-              helperText='Upcoming episode release date'
-              name='nextReleaseDate'
-              type='date'
-              className='smallInput'
-              inputRef={register({
-                required: 'Next release date is  is required',
-              })}
-              error={errors.nextReleaseDate}
-              helperText={
-                errors.nextReleaseDate
-                  ? errors.nextReleaseDate.message
-                  : 'Next episode release date'
-              }
-              margin='normal'
-            />
+            <div class='episodeInputGroup smallInput'>
+              <Typography variant='h6'>Latest episode</Typography>
+              <TextField
+                label='Season'
+                name='latestEpisode.season'
+                type='number'
+                inputProps={{ min: '1', step: '1' }}
+                inputRef={register({
+                  required: 'Season is required',
+                  min: {
+                    value: 1,
+                    message: 'Count must be greater than zero',
+                  },
+                  validate: {
+                    integer: (value) =>
+                      parseInt(value).toString() === value ||
+                      'Season must be an integer',
+                  },
+                })}
+                error={errors.seasonCount}
+                helperText={
+                  errors.seasonCount ? errors.seasonCount.message : ''
+                }
+              />
+              <TextField
+                label='Number'
+                name='latestEpisode.number'
+                type='number'
+                inputProps={{ min: '1', step: '1' }}
+                inputRef={register({
+                  required: 'Number is required',
+                  min: {
+                    value: 1,
+                    message: 'Number must be greater than zero',
+                  },
+                  validate: {
+                    integer: (value) =>
+                      parseInt(value).toString() === value ||
+                      'Number must be an integer',
+                  },
+                })}
+                error={errors.seasonCount}
+                helperText={
+                  errors.seasonCount ? errors.seasonCount.message : ''
+                }
+              />
+              <TextField
+                helperText='Release date'
+                name='latestEpisode.releaseDate'
+                type='date'
+                inputRef={register({
+                  required: 'Release date is  is required',
+                })}
+                error={errors.latestReleaseDate}
+                helperText={
+                  errors.latestReleaseDate
+                    ? errors.latestReleaseDate.message
+                    : 'Release date'
+                }
+                margin='normal'
+              />
+            </div>
+            <div class='episodeInputGroup smallInput'>
+              <Typography variant='h6'>Next episode</Typography>
+              <TextField
+                label='Season'
+                name='upcomingEpisode.season'
+                type='number'
+                inputProps={{ min: '1', step: '1' }}
+                inputRef={register({
+                  required: 'Season is required',
+                  min: {
+                    value: 1,
+                    message: 'Count must be greater than zero',
+                  },
+                  validate: {
+                    integer: (value) =>
+                      parseInt(value).toString() === value ||
+                      'Season must be an integer',
+                  },
+                })}
+                error={errors.seasonCount}
+                helperText={
+                  errors.seasonCount ? errors.seasonCount.message : ''
+                }
+              />
+              <TextField
+                label='Number'
+                name='upcomingEpisode.number'
+                type='number'
+                inputProps={{ min: '1', step: '1' }}
+                inputRef={register({
+                  required: 'Number is required',
+                  min: {
+                    value: 1,
+                    message: 'Number must be greater than zero',
+                  },
+                  validate: {
+                    integer: (value) =>
+                      parseInt(value).toString() === value ||
+                      'Number must be an integer',
+                  },
+                })}
+                error={errors.seasonCount}
+                helperText={
+                  errors.seasonCount ? errors.seasonCount.message : ''
+                }
+              />
+              <TextField
+                helperText='Release date'
+                name='upcomingEpisode.releaseDate'
+                type='date'
+                inputRef={register({
+                  required: 'Release date is  is required',
+                })}
+                error={errors.latestReleaseDate}
+                helperText={
+                  errors.latestReleaseDate
+                    ? errors.latestReleaseDate.message
+                    : 'Release date'
+                }
+                margin='normal'
+              />
+            </div>
           </FormGroup>
         )}
 
@@ -190,16 +284,18 @@ export const DialogForm = ({ onFormSubmit }) => {
         />
         <TextField
           label='Poster image url'
-          name='posterUrl'
+          name='imageUrl'
           fullWidth
           inputRef={register({
             required: 'Poster image url is required',
           })}
-          error={errors.posterUrl}
-          helperText={errors.posterUrl ? errors.posterUrl.message : ''}
+          error={errors.imageUrl}
+          helperText={errors.imageUrl ? errors.imageUrl.message : ''}
         />
         <TextField
           label='Similars'
+          name='similars'
+          inputRef={register}
           fullWidth
           helperText='Comma separated IDs'
         />

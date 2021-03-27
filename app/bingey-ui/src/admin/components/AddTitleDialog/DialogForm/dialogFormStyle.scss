@@ -3,5 +3,15 @@
 }
 
 .smallInput {
-  width: 47.5%;
+  width: 45%;
+}
+
+.episodeInputGroup {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 10px;
 }
