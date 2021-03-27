@@ -1,5 +1,4 @@
 import { useForm, FormProvider } from 'react-hook-form';
-
 import {
   Button,
   Dialog,
@@ -8,18 +7,27 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { DialogForm } from './DialogForm/DialogForm';
+import { createTitle } from 'utils/api';
+import { DialogForm } from 'admin/components/AddTitleDialog/DialogForm/DialogForm';
 
-export const AddTitleDialog = ({ isOpen, onClose }) => {
+const formatFormData = (data) => {
+  data.directors = data.directors.split(',').map((dir) => dir.trim());
+  data.genres = data.genres.split(',').map((genre) => genre.trim());
+  data.seasonEpisodes = data.seasonEpisodes?.split(',').map((ep) => ep.trim());
+  data.similars =
+    data.similars.length > 0
+      ? data.similars.split(',').map((sim) => sim.trim())
+      : null;
+
+  return data;
+};
+
+export const AddTitleDialog = ({ isOpen, handleClose }) => {
   const methods = useForm();
 
-  const handleClose = () => {
-    onClose();
-  };
-
   const onFormSubmit = (data) => {
-    console.log('handle valid submit  in parent');
-    methods.reset(data);
+    createTitle(formatFormData(data));
+    handleClose();
   };
 
   return (
@@ -38,7 +46,7 @@ export const AddTitleDialog = ({ isOpen, onClose }) => {
         <DialogForm onFormSubmit={onFormSubmit} />
       </FormProvider>
       <DialogActions>
-        <Button>Cancel</Button>
+        <Button onClick={handleClose}>Cancel</Button>
         <Button
           form='dialogForm'
           type='submit'
