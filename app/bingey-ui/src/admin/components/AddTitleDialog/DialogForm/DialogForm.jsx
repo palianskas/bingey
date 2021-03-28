@@ -105,13 +105,13 @@ export const DialogForm = ({ onFormSubmit }) => {
           }
         />
         {!isMovie && (
-          <FormGroup row className='inputGroup'>
+          <FormGroup row className='input-group'>
             <TextField
               label='Season count'
               name='seasonCount'
               type='number'
               inputProps={{ min: '1', step: '1' }}
-              className='smallInput'
+              className='small-input'
               inputRef={register({
                 required: 'Season count is required',
                 min: {
@@ -131,7 +131,7 @@ export const DialogForm = ({ onFormSubmit }) => {
               label='Episodes per season'
               name='seasonEpisodes'
               helperText='Comma separated values for each season'
-              className='smallInput'
+              className='small-input'
               inputRef={register({
                 required: 'Season episode count is required',
                 validate: {
@@ -145,7 +145,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                 errors.seasonEpisodes ? errors.seasonEpisodes.message : ''
               }
             />
-            <div class='episodeInputGroup smallInput'>
+            <div class='episode-input-group small-input'>
               <Typography variant='h6'>Latest episode</Typography>
               <TextField
                 label='Season'
@@ -207,7 +207,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                 margin='normal'
               />
             </div>
-            <div class='episodeInputGroup smallInput'>
+            <div class='episode-input-group small-input'>
               <Typography variant='h6'>Next episode</Typography>
               <TextField
                 label='Season'
