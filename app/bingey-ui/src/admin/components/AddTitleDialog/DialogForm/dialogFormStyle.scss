@@ -1,7 +1,17 @@
-.inputGroup {
+.input-group {
   justify-content: space-between;
 }
 
-.smallInput {
-  width: 47.5%;
+.small-input {
+  width: 45%;
+}
+
+.episode-input-group {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  border-radius: 10px;
 }

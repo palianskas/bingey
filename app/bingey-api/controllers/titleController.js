@@ -123,12 +123,8 @@ const validate = (method) => {
         check('similars')
           .optional()
           .custom((value) => {
-            if (value.length < 1) {
-              throw new Error('Directors are required');
-            }
-
-            if (!value.every((id) => id.trim() && id.match(/tt[0-9]+/))) {
-              throw new Error('Directors format is invalid');
+            if (value && !value.every((id) => id.trim() && id.match(/tt[0-9]+/))) {
+              throw new Error('Similar titles format is invalid');
             }
 
             return true;
