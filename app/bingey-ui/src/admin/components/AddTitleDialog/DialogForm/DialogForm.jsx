@@ -258,7 +258,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                 name='upcomingEpisode.releaseDate'
                 type='date'
                 inputRef={register({
-                  required: 'Release date is  is required',
+                  required: 'Release date is required',
                 })}
                 error={errors.latestReleaseDate}
                 helperText={
