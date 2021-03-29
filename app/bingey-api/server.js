@@ -1,10 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-const searchRoutes = require('./routes/search');
 require('dotenv').config();
 
+const searchRoutes = require('$/routes/search');
 const titleRoutes = require('$/routes/title');
 
 const { MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
@@ -15,11 +14,10 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err)
 });
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
+
 app.use('/', searchRoutes);
-app.use(bodyParser.json());
 app.use('/titles', titleRoutes);
 
 const PORT = process.env.PORT || 8080;
