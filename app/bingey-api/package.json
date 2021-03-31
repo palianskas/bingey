@@ -6,6 +6,7 @@
   "dependencies": {
     "basetag": "^2.0.1",
     "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
@@ -19,7 +20,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "postinstall": "yarn basetag link"
+    "postinstall": "yarn basetag link",
+    "import-data": "node utils/reader.js"
   },
   "keywords": [],
   "author": "",
