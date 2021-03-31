@@ -1,6 +1,6 @@
 // *** USAGE ***
 // Upload a data.tsv file to api utils directory
-// Run yarn import to upsert data from the file to the database
+// Run yarn import-data to upsert data from the file to the database
 // Entries with ids that do not exist in the database will be created
 // Entries with ids that already exist will be updated
 const fs = require('fs');
@@ -31,7 +31,7 @@ const getFilteredTitle = (titleBlock) => {
   }
 };
 
-const writeToDB = async (block, isEnd = false) => {
+const writeToDB = async (block) => {
   const filteredTitle = getFilteredTitle(block);
   try {
     await Title.updateOne(
@@ -39,7 +39,6 @@ const writeToDB = async (block, isEnd = false) => {
       { imdb_id: filteredTitle.titleId, name: filteredTitle.title, alternativeName: filteredTitle.alternativeTitle },
       { upsert: true }
     );
-    if (isEnd) console.info('finished importing!');
   } catch (err) {
     console.info(err);
   }
@@ -58,6 +57,7 @@ fs.createReadStream('./utils/data.tsv')
   })
   .on('end', () => {
     writeToDB(titleBlock, true);
+    console.info('finished importing!');
   })
   .on('error', (err) => {
     console.info(err);

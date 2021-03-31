@@ -21,7 +21,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
     "postinstall": "yarn basetag link",
-    "import-data": "node utils/reader.js"
+    "import-data": "node --max_old_space_size=2048 utils/reader.js"
   },
   "keywords": [],
   "author": "",
