@@ -2,7 +2,7 @@ const { model, Schema } = require('mongoose');
 
 const titleSchema = new Schema(
   {
-    _id: {
+    imdb_id: {
       type: String,
       required: true,
     },
@@ -10,6 +10,10 @@ const titleSchema = new Schema(
     name: {
       type: String,
       required: true,
+    },
+    alternativeName: {
+      type: String,
+      required: false,
     },
     imageUrl: {
       type: String,
@@ -35,7 +39,6 @@ const titleSchema = new Schema(
     similars: [String],
   },
   {
-    _id: false,
     timestamps: true,
   }
 );
