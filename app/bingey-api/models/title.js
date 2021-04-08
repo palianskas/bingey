@@ -2,19 +2,13 @@ const { model, Schema } = require('mongoose');
 
 const titleSchema = new Schema(
   {
-    imdb_id: {
-      type: String,
-      required: true,
-    },
+    imdb_id: String,
     isCustom: Boolean,
     name: {
       type: String,
       required: true,
     },
-    alternativeName: {
-      type: String,
-      required: false,
-    },
+    alternativeName: String,
     imageUrl: {
       type: String,
       required: true,
