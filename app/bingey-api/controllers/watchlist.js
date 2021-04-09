@@ -2,6 +2,24 @@ const { check, validationResult } = require('express-validator');
 
 const Watchlist = require('$/models/watchlist');
 
+const getWatchlists = async (req, res) => {
+  try {
+    const watchlists = await Watchlist.find();
+    res.json(watchlists);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+const getWatchlistById = async (req, res) => {
+  try {
+    const watchlist = await Watchlist.findById(req.params.id);
+    res.json(watchlist);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 const createWatchlist = async (req, res, next) => {
   try {
     const errors = validationResult(req).errors;
@@ -44,5 +62,7 @@ const parseWatchlist = (req) => {
 
 module.exports = {
   validate: validate,
+  getWatchlists: getWatchlists,
+  getWatchlistById: getWatchlistById,
   createWatchlist: createWatchlist,
 };
