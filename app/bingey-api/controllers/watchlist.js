@@ -14,7 +14,27 @@ const getWatchlists = async (req, res) => {
 const getWatchlistById = async (req, res) => {
   try {
     const watchlist = await Watchlist.findById(req.params.id);
+    
     res.json(watchlist);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+const addTitleToWatchlist = async (req, res) => {
+  try {
+    const watchlist = await Watchlist.findById(req.params.id);
+    const newTitle = req;
+    watchlist.titles.push(newTitle);
+    
+    await watchlist.save((err, watchlist) => {
+      if (err) {
+        res.status(400).json({ errors: err });
+        return;
+      }
+      res.json(watchlist);
+    });
+
   } catch (err) {
     res.json(err);
   }
@@ -65,4 +85,5 @@ module.exports = {
   getWatchlists: getWatchlists,
   getWatchlistById: getWatchlistById,
   createWatchlist: createWatchlist,
+  addTitleToWatchlist: addTitleToWatchlist,
 };
