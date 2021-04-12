@@ -1,6 +1,7 @@
 const { check, validationResult } = require('express-validator');
 
 const Watchlist = require('$/models/watchlist');
+const Title = require('$/models/title');
 
 const getWatchlists = async (req, res) => {
   try {
@@ -22,10 +23,10 @@ const getWatchlistById = async (req, res) => {
 };
 
 const addTitleToWatchlist = async (req, res) => {
+  
   try {
     const watchlist = await Watchlist.findById(req.params.id);
-    const newTitle = req;
-    watchlist.titles.push(newTitle);
+    watchlist.titles.push(req.body);
     
     await watchlist.save((err, watchlist) => {
       if (err) {

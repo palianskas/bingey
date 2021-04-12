@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', watchlistController.getWatchlists);
 router.get('/:id', watchlistController.getWatchlistById);
-router.get('/watchlists/:id', watchlistController.getWatchlistById);
+router.put('/watchlists/:id', watchlistController.addTitleToWatchlist);
 router.post('/', watchlistController.validate('createWatchlist'), watchlistController.createWatchlist);
 
 module.exports = router;
