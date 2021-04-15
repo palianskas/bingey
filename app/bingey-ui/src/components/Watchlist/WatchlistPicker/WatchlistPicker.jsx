@@ -12,7 +12,6 @@ const WatchlistPicker = withRouter(({ history }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   useEffect(() => {
-    console.log(window.location.pathname);
     const loadWatchlists = async () => {
       const watchlists = await api.getWatchlists();
       if (
