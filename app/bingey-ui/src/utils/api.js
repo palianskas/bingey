@@ -23,4 +23,12 @@ const createTitle = async (title) => {
   }
 };
 
-export { search, createTitle };
+const getWatchlists = async () => {
+  return (await axios.get(`${BASE_URL}/watchlists`)).data;
+};
+
+const getWatchlistById = async (id) => {
+  return (await axios.get(`${BASE_URL}/watchlists/${id}`)).data;
+};
+
+export default { search, createTitle, getWatchlists, getWatchlistById };

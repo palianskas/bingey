@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import { createTitle } from 'utils/api';
+import api from 'utils/api';
 import { DialogForm } from 'admin/components/AddTitleDialog/DialogForm/DialogForm';
 
 const formatFormData = (data) => {
@@ -26,7 +26,7 @@ export const AddTitleDialog = ({ isOpen, handleClose }) => {
   const methods = useForm();
 
   const onFormSubmit = (data) => {
-    createTitle(formatFormData(data));
+    api.createTitle(formatFormData(data));
     handleClose();
   };
 
