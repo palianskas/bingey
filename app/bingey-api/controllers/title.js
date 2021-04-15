@@ -6,7 +6,7 @@ const createTitle = async (req, res, next) => {
   try {
     const errors = validationResult(req).errors;
 
-    if (errors && errors.length != 0) {
+    if (errors && errors.length !== 0) {
       res.status(400).json({ errors: errors });
 
       return;
@@ -136,7 +136,6 @@ const validate = (method) => {
 
 const parseTitle = (req) => {
   return new Title({
-    _id: req.body._id,
     isCustom: true,
     name: req.body.name,
     releaseDate: req.body.releaseDate,

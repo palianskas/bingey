@@ -40,18 +40,6 @@ export const DialogForm = ({ onFormSubmit }) => {
         />
         <br />
         <TextField
-          label='ID'
-          name='_id'
-          autoComplete
-          autoFocus
-          fullWidth
-          inputRef={register({
-            required: 'ID is required',
-          })}
-          error={errors.id}
-          helperText={errors.id ? errors.id.message : ''}
-        />
-        <TextField
           label='Name'
           name='name'
           fullWidth
