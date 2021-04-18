@@ -23,10 +23,16 @@ const getWatchlistById = async (req, res) => {
 };
 
 const addTitleToWatchlist = async (req, res) => {
-  
   try {
+    const errors = validationResult(req).errors;
+    if (errors && errors.length != 0) {
+      res.status(400).json({ errors: errors });
+      return;
+    }
+
     const watchlist = await Watchlist.findById(req.params.id);
-    watchlist.titles.push(req.body);
+    const title = parseTitle(req);
+    watchlist.titles.push(title);
     
     await watchlist.save((err, watchlist) => {
       if (err) {
@@ -72,12 +78,32 @@ const validate = (method) => {
     case 'createWatchlist': {
       return [check('name', 'Name is required').trim().notEmpty()];
     }
+    case 'addTitleToWatchlist': {
+      return [
+        check('name', 'Name is required').trim().notEmpty(),
+        check('releaseDate', 'Release date is required').trim().notEmpty(),
+        check('releaseDate', 'Release date format is invalid').isDate(),
+        check('imageUrl', 'Image URL is required').notEmpty(),
+        check('imageUrl', 'Image URL format is invalid').isURL()
+      ];
+    }
   }
 };
 
 const parseWatchlist = (req) => {
   return new Watchlist({
     name: req.body.name,
+  });
+};
+
+
+const parseTitle = (req) => {
+  return new Title({
+    _id: req.body._id,
+    name: req.body.name,
+    releaseDate: req.body.releaseDate,
+    upcomingEpisode: req.body.upcomingEpisode,
+    imageUrl: req.body.imageUrl,
   });
 };
 
