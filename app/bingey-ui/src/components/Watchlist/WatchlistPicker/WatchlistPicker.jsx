@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import api from 'utils/api';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Collapse } from '@material-ui/core';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MovieIcon from '@material-ui/icons/Movie';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import { withRouter } from 'react-router-dom';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
-const WatchlistPicker = withRouter(({ history }) => {
+const WatchlistPicker = withRouter(({ history, openDrawer, isDrawerOpen }) => {
   const [watchlists, setWatchlists] = useState([]);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    openDrawer();
+    setOpen(!open);
+  };
 
   useEffect(() => {
     const loadWatchlists = async () => {
@@ -23,46 +29,32 @@ const WatchlistPicker = withRouter(({ history }) => {
     loadWatchlists();
   }, []);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  useEffect(() => {
+    setOpen(isDrawerOpen);
+  }, [isDrawerOpen]);
 
   return (
     <div>
-      <ListItem
-        button
-        aria-controls='simple-menu'
-        aria-haspopup='true'
-        onClick={handleClick}
-        key={'watchlist'}
-      >
+      <ListItem button onClick={handleClick} key={'watchlist'}>
         <ListItemIcon>
           <MovieIcon />
         </ListItemIcon>
         <ListItemText primary={'Watchlist'} />
+        {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Menu
-        id='simple-menu'
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
+      <Collapse in={open} timeout='auto' unmountOnExit>
         {watchlists.map((watchlist) => (
-          <MenuItem
+          <ListItem
+            button
             key={watchlist._id}
             onClick={() => {
               history.push(`/watchlists/${watchlist._id}`);
             }}
           >
             {watchlist.name}
-          </MenuItem>
+          </ListItem>
         ))}
-      </Menu>
+      </Collapse>
     </div>
   );
 });
