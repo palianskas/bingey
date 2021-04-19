@@ -1,0 +1,10 @@
+.selected {
+  font-weight: 900;
+}
+
+.item-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block !important;
+}
