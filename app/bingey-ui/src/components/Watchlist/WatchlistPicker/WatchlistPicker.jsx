@@ -12,7 +12,7 @@ export const WatchlistPicker = withRouter(
     const [watchlists, setWatchlists] = useState([]);
     const [open, setOpen] = useState(false);
 
-    const handleClick = () => {
+    const handleExpand = () => {
       openDrawer();
       setOpen(!open);
     };
@@ -35,7 +35,7 @@ export const WatchlistPicker = withRouter(
 
     return (
       <div>
-        <ListItem button onClick={handleClick} key={'watchlist'}>
+        <ListItem button onClick={handleExpand} key={'watchlist'}>
           <ListItemIcon>
             <MovieIcon />
           </ListItemIcon>
