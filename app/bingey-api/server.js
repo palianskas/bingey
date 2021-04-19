@@ -7,8 +7,8 @@ const searchRoutes = require('$/routes/search');
 const titleRoutes = require('$/routes/title');
 const watchlistRoutes = require('$/routes/watchlist');
 
-const { MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
-const uri = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.5naxt.mongodb.net/bingey?retryWrites=true&w=majority`;
+const { MONGODB_HOSTNAME, MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
+const uri = `mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@${MONGODB_HOSTNAME}/bingey?authSource=admin`;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
   err ? console.info(err) : console.info('connected to database');
