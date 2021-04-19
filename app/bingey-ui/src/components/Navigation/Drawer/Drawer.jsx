@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Drawer, IconButton, Divider, List } from '@material-ui/core';
+import {
+  Drawer,
+  IconButton,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import StarsIcon from '@material-ui/icons/Stars';
 import SettingsIcon from '@material-ui/icons/Settings';
 import './drawerStyle.scss';
-import WatchlistPicker from 'components/Watchlist/WatchlistPicker/WatchlistPicker';
+import { WatchlistPicker } from 'components/Watchlist/WatchlistPicker/WatchlistPicker';
 
 const defaultProps = {
   isOpen: false,
