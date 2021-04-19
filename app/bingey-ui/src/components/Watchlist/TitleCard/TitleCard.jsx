@@ -25,7 +25,7 @@ export default function TitleCard({ title }) {
     <div>
       <Card className='card' elevation={5}>
         <CardActionArea onClick={handleOpenDialog}>
-          <CardMedia className='media' image={title.image} title='Poster' />
+          <CardMedia className='media' image={title.imageUrl} title='Poster' />
           <CardContent>
             <Typography className='center' gutterBottom variant='h5'>
               {title.name}

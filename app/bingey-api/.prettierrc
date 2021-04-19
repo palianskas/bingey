@@ -1,4 +1,7 @@
 {
   "singleQuote": true,
-  "printWidth": 120
+  "jsxSingleQuote": true,
+  "printWidth": 120,
+  "proseWrap": "always",
+  "endOfLine": "lf"
 }

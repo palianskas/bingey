@@ -30,6 +30,7 @@ export const Navigation = ({ title, drawerWidth }) => {
         isOpen={isDrawerOpen}
         width={drawerWidth}
         onClose={handleDrawerClose}
+        onOpen={handleDrawerOpen}
       />
     </>
   );

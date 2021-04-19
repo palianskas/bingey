@@ -1,22 +1,27 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Drawer, IconButton, Divider, List } from '@material-ui/core';
+import {
+  Drawer,
+  IconButton,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MovieIcon from '@material-ui/icons/Movie';
 import StarsIcon from '@material-ui/icons/Stars';
 import SettingsIcon from '@material-ui/icons/Settings';
-
 import './drawerStyle.scss';
+import { WatchlistPicker } from 'components/Watchlist/WatchlistPicker/WatchlistPicker';
 
 const defaultProps = {
   isOpen: false,
   width: 240,
   onClose: () => {},
+  onOpen: () => {},
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   }),
 }));
 
-export const NavigationDrawer = ({ isOpen, width, onClose }) => {
+export const NavigationDrawer = ({ isOpen, width, onClose, onOpen }) => {
   const classes = useStyles({ drawerWidth: width });
   const theme = useTheme();
 
@@ -61,12 +66,11 @@ export const NavigationDrawer = ({ isOpen, width, onClose }) => {
       </div>
       <Divider />
       <List className='drawerContent'>
-        <ListItem button key={'watchlist'}>
-          <ListItemIcon>
-            <MovieIcon />
-          </ListItemIcon>
-          <ListItemText primary={'Watchlist'} />
-        </ListItem>
+        <WatchlistPicker
+          openDrawer={onOpen}
+          closeDrawer={onClose}
+          isDrawerOpen={isOpen}
+        />
         <ListItem button key={'recommended'}>
           <ListItemIcon>
             <StarsIcon />
