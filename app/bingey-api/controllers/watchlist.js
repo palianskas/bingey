@@ -34,7 +34,7 @@ const addTitleToWatchlist = async (req, res) => {
     const title = parseTitle(req);
     watchlist.titles.push(title);
     
-    await watchlist.save((err, watchlist) => {
+    watchlist.save((err, watchlist) => {
       if (err) {
         res.status(400).json({ errors: err });
         return;
