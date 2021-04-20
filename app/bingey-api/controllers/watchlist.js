@@ -84,7 +84,26 @@ const validate = (method) => {
         check('releaseDate', 'Release date is required').trim().notEmpty(),
         check('releaseDate', 'Release date format is invalid').isDate(),
         check('imageUrl', 'Image URL is required').notEmpty(),
-        check('imageUrl', 'Image URL format is invalid').isURL()
+        check('imageUrl', 'Image URL format is invalid').isURL(),
+
+        check('upcomingEpisode.season', 'Upcoming episode season is required')
+          .if(check('isMovie').isIn(['false', 'False', '0']))
+          .notEmpty(),
+        check('upcomingEpisode.season', 'Upcoming episode season format is invalid')
+          .if(check('isMovie').isIn(['false', 'False', '0']))
+          .isInt(),
+        check('upcomingEpisode.number', 'Upcoming episode number is required')
+          .if(check('isMovie').isIn(['false', 'False', '0']))
+          .notEmpty(),
+        check('upcomingEpisode.number', 'Upcoming episode number format is invalid')
+          .if(check('isMovie').isIn(['false', 'False', '0']))
+          .isInt(),
+        check('upcomingEpisode.releaseDate', 'Upcoming episode release date is required')
+          .if(check('isMovie').isIn(['false', 'False', '0']))
+          .notEmpty(),
+        check('upcomingEpisode.releaseDate', 'Upcoming episode release date format is invalid')
+          .if(check('isMovie').isIn(['false', 'False', '0']))
+          .isDate()
       ];
     }
   }
@@ -102,6 +121,7 @@ const parseTitle = (req) => {
     _id: req.body._id,
     name: req.body.name,
     releaseDate: req.body.releaseDate,
+    isMovie: req.body.isMovie,
     upcomingEpisode: req.body.upcomingEpisode,
     imageUrl: req.body.imageUrl,
   });
