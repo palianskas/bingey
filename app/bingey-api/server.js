@@ -1,18 +1,30 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 
 const searchRoutes = require('$/routes/search');
 const titleRoutes = require('$/routes/title');
 const watchlistRoutes = require('$/routes/watchlist');
 
-const { MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
-const uri = `mongodb+srv://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@cluster0.5naxt.mongodb.net/bingey?retryWrites=true&w=majority`;
+const { MONGODB_HOSTNAME, MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
-  err ? console.info(err) : console.info('connected to database');
-});
+mongoose.connect(
+  `mongodb://${MONGODB_HOSTNAME}:27017`,
+  {
+    dbName: 'bingey',
+    auth: {
+      authSource: 'admin',
+      user: MONGODB_USERNAME,
+      password: MONGODB_PASSWORD,
+    },
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  },
+  (err) => {
+    err ? console.info(err) : console.info('connected to database');
+  }
+);
 
 const app = express();
 app.use(cors());
