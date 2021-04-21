@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   mongodb:
-    container_name: mongo-dev
+    container_name: mongo
     image: mongo
     environment:
       - MONGO_INITDB_DATABASE=auth
@@ -19,8 +19,8 @@ services:
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_PASSWORD}
-      - ME_CONFIG_MONGODB_SERVER=mongo-dev
-      - ME_CONFIG_BASICAUTH_USERNAME=admin
-      - ME_CONFIG_BASICAUTH_PASSWORD=ihavealongpassword
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_BASICAUTH_USERNAME=${MONGODB_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGODB_PASSWORD}
     ports:
       - '8081:8081'
