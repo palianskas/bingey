@@ -1,3 +1,5 @@
+$smBreakpoint: 600px;
+
 .root {
   flex-grow: 1;
 }
@@ -6,7 +8,7 @@
   display: flex;
   justify-content: center;
   min-height: 64px !important;
-  z-index: 2000 !important;
+  z-index: 1250 !important;
   transition: width 0.25s ease-out, margin 0.25s ease-out !important;
 }
 
@@ -25,40 +27,6 @@
   display: none;
 }
 
-.search {
-  position: relative;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.15);
-  transition: background-color 0.5s;
-  margin-left: 0;
-  width: 100%;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-}
-
-.searchIcon {
-  padding: 0 10px;
-  height: 100%;
-  position: absolute;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.inputRoot {
-  color: inherit !important;
-}
-
-.inputBase {
-  padding: 5px 5px 5px 0 !important;
-  padding-left: 40px !important;
-  width: 100% !important;
-}
-
-$smBreakpoint: 600px;
-
 @media (min-width: #{$smBreakpoint}) {
   .menuButton {
     margin-left: -12px !important;
@@ -66,18 +34,5 @@ $smBreakpoint: 600px;
 
   .logo {
     display: block;
-  }
-
-  .search {
-    margin-left: 5px;
-    width: auto;
-  }
-
-  .inputBase {
-    transition: width 0.25s ease-out !important;
-    width: 12ch !important;
-    &:focus {
-      width: 20ch !important;
-    }
   }
 }
