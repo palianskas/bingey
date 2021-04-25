@@ -1,0 +1,14 @@
+$height: 10em;
+$width: 25em;
+
+$smBreakpoint: 600px;
+
+.item {
+  height: $height;
+  width: $width !important;
+  padding: 0 !important;
+}
+
+.image {
+  height: $height;
+}
