@@ -36,7 +36,7 @@ export const NavigationAppBar = ({
           [classes.appBarShift]: isDrawerOpen,
         })}
       >
-        <Toolbar>
+        <Toolbar className='search-toolbar'>
           <IconButton
             edge='start'
             className={clsx('menuButton', {
