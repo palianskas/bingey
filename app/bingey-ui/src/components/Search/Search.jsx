@@ -15,7 +15,8 @@ export const Search = () => {
   const handleOpenDropdown = () => {
     setResults([
       {
-        name: 'first',
+        name:
+          'Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Hellbound, Flesh-Eating Subhumanoid Zombified Living Dead, Part 3',
         releaseDate: '2020-20-20',
         imageUrl:
           'https://static.bunnycdn.ru/i/cache/images/8/81/818f8f4c10aa94ec4ac96f2677aca0cb.jpg-w380',
@@ -26,16 +27,25 @@ export const Search = () => {
         imageUrl:
           'https://m.media-amazon.com/images/M/MV5BMjM4ZTVkODctNGZhNC00NWY5LWJkMjEtYmI1ZDg2Yjg2NDQzXkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_UX182_CR0,0,182,268_AL_.jpg',
       },
+      {
+        name: 'first',
+        releaseDate: '2020-20-20',
+        imageUrl:
+          'https://m.media-amazon.com/images/M/MV5BMjM4ZTVkODctNGZhNC00NWY5LWJkMjEtYmI1ZDg2Yjg2NDQzXkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_UX182_CR0,0,182,268_AL_.jpg',
+      },
+      {
+        name: 'first',
+        releaseDate: '2020-20-20',
+        imageUrl:
+          'https://m.media-amazon.com/images/M/MV5BMjM4ZTVkODctNGZhNC00NWY5LWJkMjEtYmI1ZDg2Yjg2NDQzXkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_UX182_CR0,0,182,268_AL_.jpg',
+      },
     ]);
     setIsOpenDropdown(true);
-    console.log('open!');
   };
 
   const handleCloseDropdown = () => {
     setIsOpenDropdown(false);
     setResults(null);
-    searchRef.current.blur();
-    console.log(searchRef.current);
   };
 
   return (
@@ -57,7 +67,7 @@ export const Search = () => {
       <SearchDropdown
         open={isOpenDropdown}
         data={results}
-        anchorEl={searchRef}
+        anchorRef={searchRef}
         onClose={handleCloseDropdown}
       />
     </div>
