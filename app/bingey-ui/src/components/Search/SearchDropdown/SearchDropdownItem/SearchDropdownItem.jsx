@@ -1,16 +1,31 @@
-import { ListItem, ListItemText } from '@material-ui/core';
+import { Divider, ListItem, ListItemText, Typography } from '@material-ui/core';
 
 import './searchDropdownItemStyle.scss';
 
-export const SearchDropdownItem = ({ item }) => {
+export const SearchDropdownItem = ({ item, isLast = false }) => {
   return (
-    <ListItem className='item' alignItems='flex-start'>
-      <ListItemText primary={item.name} secondary={item.releaseDate} />
-      <img
-        src={item.imageUrl}
-        className='image'
-        alt={`${item.name} poster`}
-      ></img>
-    </ListItem>
+    <div>
+      <ListItem className='item' alignItems='flex-start'>
+        <ListItemText
+          className='text'
+          primary={
+            <Typography variant='h5' className='primary'>
+              {item.name}
+            </Typography>
+          }
+          secondary={
+            <Typography variant='h5' className='secondary'>
+              {item.releaseDate}
+            </Typography>
+          }
+        />
+        <img
+          src={item.imageUrl}
+          className='image'
+          alt={`${item.name} poster`}
+        ></img>
+      </ListItem>
+      {!isLast && <Divider />}
+    </div>
   );
 };
