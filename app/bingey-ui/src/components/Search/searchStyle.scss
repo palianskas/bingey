@@ -39,9 +39,10 @@ $smBreakpoint: 600px;
   }
 
   .inputBase {
-    transition: width 0.25s ease-out !important;
+    transition: width 0.25s ease-out 0.3s;
     width: 12ch !important;
     &:focus {
+      transition-delay: 0s;
       width: 22.25em !important;
     }
   }

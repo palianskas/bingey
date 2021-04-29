@@ -7,7 +7,7 @@ import './searchDropdownStyle.scss';
 export const SearchDropdown = ({ open, titles }) => {
   return (
     <Paper className={'dropdown'}>
-      <Collapse in={open} timeout='auto'>
+      <Collapse in={open} timeout={250}>
         {titles?.map((item) => (
           <SearchDropdownItem item={item} key={item?._id} />
         ))}
