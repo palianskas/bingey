@@ -2,7 +2,7 @@ import { Divider, ListItem, ListItemText, Typography } from '@material-ui/core';
 
 import './searchDropdownItemStyle.scss';
 
-export const SearchDropdownItem = ({ item, isLast = false }) => {
+export const SearchDropdownItem = ({ item }) => {
   return (
     <div>
       <ListItem className='item' alignItems='flex-start'>
@@ -25,7 +25,7 @@ export const SearchDropdownItem = ({ item, isLast = false }) => {
           alt={`${item.name} poster`}
         ></img>
       </ListItem>
-      {!isLast && <Divider />}
+      <Divider />
     </div>
   );
 };
