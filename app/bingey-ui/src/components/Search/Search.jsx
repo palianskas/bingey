@@ -49,7 +49,6 @@ export const Search = () => {
 
   const handleCloseDropdown = () => {
     setIsOpenDropdown(false);
-    setResults(null);
   };
 
   return (
