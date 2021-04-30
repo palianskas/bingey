@@ -9,7 +9,7 @@ export const SearchDropdownItem = ({ item, onClick }) => {
         <ListItemText
           className='text'
           primary={
-            <Typography variant='h5' className='primary'>
+            <Typography variant='h5' className='primary' title={item?.name}>
               {item?.name}
             </Typography>
           }

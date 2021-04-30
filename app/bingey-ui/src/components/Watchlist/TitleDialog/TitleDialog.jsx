@@ -32,7 +32,7 @@ export default function TitleDialog({ title, onClose, open }) {
         aria-describedby='alert-dialog-slide-description'
       >
         <div className='header-container'>
-          <DialogTitle className='title' disableTypography>
+          <DialogTitle className='title' disableTypography title={title?.name}>
             {title?.name}
           </DialogTitle>
           <Button
