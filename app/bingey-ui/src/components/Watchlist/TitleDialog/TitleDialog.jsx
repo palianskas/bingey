@@ -32,7 +32,9 @@ export default function TitleDialog({ title, onClose, open }) {
         aria-describedby='alert-dialog-slide-description'
       >
         <div className='header-container'>
-          <DialogTitle className='title'>{title.name}</DialogTitle>
+          <DialogTitle className='title' disableTypography>
+            {title?.name}
+          </DialogTitle>
           <Button
             variant='outlined'
             className='add-button'
@@ -47,20 +49,20 @@ export default function TitleDialog({ title, onClose, open }) {
         <DialogContent>
           <CardMedia
             className={`center mediaDialog`}
-            image={title.image}
+            image={title?.imageUrl}
             title='Poster'
           />
           <CardContent>
             <Typography variant='body1' color='text' component='p'>
-              {title.upcomingItem}: {title.releaseDate}
+              {title?.upcomingItem}: {title?.releaseDate}
             </Typography>
 
             <Typography variant='body1' color='text'>
-              Rating: {title.rating}
+              Rating: {title?.rating}
             </Typography>
           </CardContent>
           <DialogContentText id='alert-dialog-slide-description'>
-            {title.description}
+            {title?.description}
           </DialogContentText>
         </DialogContent>
       </DialogUI>
