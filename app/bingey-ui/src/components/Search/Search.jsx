@@ -66,9 +66,12 @@ export const Search = () => {
         inputProps={{ 'aria-label': 'search' }}
         ref={searchRef}
         onClick={handleOpenDropdown}
-        onBlur={handleCloseDropdown}
       />
-      <SearchDropdown open={isOpenDropdown} titles={results} />
+      <SearchDropdown
+        open={isOpenDropdown}
+        titles={results}
+        onClose={handleCloseDropdown}
+      />
     </div>
   );
 };

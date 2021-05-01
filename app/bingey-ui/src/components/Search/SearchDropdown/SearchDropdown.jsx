@@ -6,7 +6,7 @@ import TitleDialog from 'components/Watchlist/TitleDialog/TitleDialog';
 
 import './searchDropdownStyle.scss';
 
-export const SearchDropdown = ({ open, titles }) => {
+export const SearchDropdown = ({ open, titles, onClose }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isOpenDialog, setIsOpenDialog] = useState(false);
 
@@ -14,6 +14,7 @@ export const SearchDropdown = ({ open, titles }) => {
     // TODO need to get full selectedItem title from api here
     setSelectedItem(selectedItem);
     setIsOpenDialog(true);
+    onClose();
   };
 
   const handleCloseDialog = () => {

@@ -4,8 +4,8 @@ import './searchDropdownItemStyle.scss';
 
 export const SearchDropdownItem = ({ item, onClick }) => {
   return (
-    <>
-      <ListItem className='item' alignItems='flex-start' onClick={onClick}>
+    <div onClick={onClick}>
+      <ListItem className='item' alignItems='flex-start'>
         <ListItemText
           className='text'
           primary={
@@ -26,6 +26,6 @@ export const SearchDropdownItem = ({ item, onClick }) => {
         ></img>
       </ListItem>
       <Divider />
-    </>
+    </div>
   );
 };
