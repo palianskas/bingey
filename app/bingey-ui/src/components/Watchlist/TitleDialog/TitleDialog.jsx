@@ -14,10 +14,6 @@ export const TitleDialog = ({ title, onClose, open }) => {
     onClose();
   };
 
-  useEffect(() => {
-    console.log(title);
-  }, []);
-
   return (
     <div className='center centerFlex'>
       <BasicDialog
