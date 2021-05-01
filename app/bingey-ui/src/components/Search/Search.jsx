@@ -66,6 +66,7 @@ export const Search = () => {
         inputProps={{ 'aria-label': 'search' }}
         ref={searchRef}
         onClick={handleOpenDropdown}
+        onBlur={() => setTimeout(handleCloseDropdown, 100)}
       />
       <SearchDropdown
         open={isOpenDropdown}
