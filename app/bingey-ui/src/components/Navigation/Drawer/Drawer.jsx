@@ -15,7 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import StarsIcon from '@material-ui/icons/Stars';
 import SettingsIcon from '@material-ui/icons/Settings';
 import './drawerStyle.scss';
-import { WatchlistsControler } from 'components/WatchlistsControler/WatchlistsControler';
+import { WatchlistsController } from 'components/WatchlistsControler/WatchlistsController';
 
 const defaultProps = {
   isOpen: false,
@@ -66,7 +66,7 @@ export const NavigationDrawer = ({ isOpen, width, onClose, onOpen }) => {
       </div>
       <Divider />
       <List className='drawerContent'>
-        <WatchlistsControler openDrawer={onOpen} isDrawerOpen={isOpen} />
+        <WatchlistsController openDrawer={onOpen} isDrawerOpen={isOpen} />
         <ListItem button key={'recommended'}>
           <ListItemIcon>
             <StarsIcon />

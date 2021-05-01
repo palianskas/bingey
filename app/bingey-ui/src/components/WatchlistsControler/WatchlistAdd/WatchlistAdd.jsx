@@ -5,37 +5,45 @@ import {
   ListItemIcon,
   ListItemText,
   TextField,
+  Slide,
+  DialogTitle,
+  DialogContent,
 } from '@material-ui/core';
-import Slide from '@material-ui/core/Slide';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
 import DialogUI from '@material-ui/core/Dialog';
 import './WatchlistAdd.scss';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { useForm } from 'react-hook-form';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
 });
 
 export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [watchlistName, setWatchlistName] = useState('');
+  const { register, handleSubmit, formState } = useForm();
+  const errors = formState.errors;
 
   const closeDialog = () => {
-    setDialogOpen(false);
+    setIsDialogOpen(false);
   };
 
   const openDialog = () => {
     openDrawer();
-    setDialogOpen(true);
+    setIsDialogOpen(true);
   };
 
   const handleInputChange = (e) => {
     setWatchlistName(e.target.value);
   };
 
+  const onSubmit = () => {
+    closeDialog();
+    onCreateWatchlist(watchlistName);
+  };
+
   return (
-    <>
+    <form id='create-watchlist-form' onSubmit={handleSubmit(onSubmit)}>
       <ListItem button onClick={openDialog} key={'create'}>
         <ListItemIcon>
           <AddCircleIcon />
@@ -43,7 +51,7 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
         <ListItemText primary={'New Watchlist'} />
       </ListItem>
       <DialogUI
-        open={dialogOpen}
+        open={isDialogOpen}
         onClose={closeDialog}
         TransitionComponent={Transition}
         aria-labelledby='alert-dialog-slide-title'
@@ -56,15 +64,20 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
           <TextField
             id='outlined-basic'
             label='Name'
+            name='name'
+            required={true}
+            inputRef={register({
+              required: 'Name is required',
+            })}
+            error={!!errors.name}
+            helperText={errors.name ? errors.name.message : ''}
             variant='outlined'
             onChange={handleInputChange}
           />
           <Button
             className={'save-button'}
-            onClick={() => {
-              onCreateWatchlist(watchlistName);
-              closeDialog();
-            }}
+            type='submit'
+            form='create-watchlist-form'
             variant='contained'
             color='primary'
           >
@@ -72,6 +85,6 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
           </Button>
         </DialogContent>
       </DialogUI>
-    </>
+    </form>
   );
 }
