@@ -5,18 +5,11 @@ import {
   ListItemIcon,
   ListItemText,
   TextField,
-  Slide,
-  DialogTitle,
-  DialogContent,
 } from '@material-ui/core';
-import DialogUI from '@material-ui/core/Dialog';
 import './WatchlistAdd.scss';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useForm } from 'react-hook-form';
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction='up' ref={ref} {...props} />;
-});
+import { BasicDialog } from 'components/Dialogs/BasicDialog';
 
 export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -24,7 +17,7 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
   const { register, handleSubmit, formState } = useForm();
   const errors = formState.errors;
 
-  const closeDialog = () => {
+  const handleDialogClose = () => {
     setIsDialogOpen(false);
   };
 
@@ -38,7 +31,7 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
   };
 
   const onSubmit = () => {
-    closeDialog();
+    setIsDialogOpen(false);
     onCreateWatchlist(watchlistName);
   };
 
@@ -50,17 +43,12 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
         </ListItemIcon>
         <ListItemText primary={'New Watchlist'} />
       </ListItem>
-      <DialogUI
-        open={isDialogOpen}
-        onClose={closeDialog}
-        TransitionComponent={Transition}
-        aria-labelledby='alert-dialog-slide-title'
-        aria-describedby='alert-dialog-slide-description'
+      <BasicDialog
+        dialogTitle={'New Watchlist'}
+        isDialogOpen={isDialogOpen}
+        onDialogClose={handleDialogClose}
       >
-        <div className='header-container'>
-          <DialogTitle className='title'>New Watchlist</DialogTitle>
-        </div>
-        <DialogContent className={'input-container'}>
+        <div className={'input-container'}>
           <TextField
             id='outlined-basic'
             label='Name'
@@ -83,8 +71,8 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
           >
             Save
           </Button>
-        </DialogContent>
-      </DialogUI>
+        </div>
+      </BasicDialog>
     </form>
   );
 }

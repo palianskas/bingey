@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 
 import 'components/Watchlist/TitleCard/titleCardStyle.scss';
-import TitleDialog from 'components/Watchlist/TitleDialog/TitleDialog';
+import { TitleDialog } from 'components/Watchlist/TitleDialog/TitleDialog';
 
 export default function TitleCard({ title }) {
   const [open, setOpen] = useState(false);
