@@ -39,10 +39,19 @@ const addTitleToWatchlist = async (id, title) => {
   }
 };
 
+const createWatchlist = async (watchlist) => {
+  try {
+    return (await axios.post(`${BASE_URL}/watchlists`, watchlist)).data;
+  } catch (error) {
+    // handle error
+  }
+};
+
 export default {
   search,
   createTitle,
   getWatchlists,
   getWatchlistById,
   addTitleToWatchlist,
+  createWatchlist,
 };
