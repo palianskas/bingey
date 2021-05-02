@@ -31,4 +31,18 @@ const getWatchlistById = async (id) => {
   return (await axios.get(`${BASE_URL}/watchlists/${id}`)).data;
 };
 
-export default { search, createTitle, getWatchlists, getWatchlistById };
+const createWatchlist = async (watchlist) => {
+  try {
+    return (await axios.post(`${BASE_URL}/watchlists`, watchlist)).data;
+  } catch (error) {
+    // handle error
+  }
+};
+
+export default {
+  search,
+  createTitle,
+  getWatchlists,
+  getWatchlistById,
+  createWatchlist,
+};

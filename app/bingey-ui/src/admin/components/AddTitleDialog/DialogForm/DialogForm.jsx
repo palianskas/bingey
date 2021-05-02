@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import dialogFormStyle from './dialogFormStyle.scss';
+import './dialogFormStyle.scss';
 
 export const DialogForm = ({ onFormSubmit }) => {
   const { register, formState, handleSubmit, getValues } = useFormContext();
@@ -46,7 +46,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           inputRef={register({
             required: 'Name is required',
           })}
-          error={errors.name}
+          error={!!errors.name}
           helperText={errors.name ? errors.name.message : ''}
         />
         <TextField
@@ -57,7 +57,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           inputRef={register({
             required: 'Release date is  is required',
           })}
-          error={errors.releaseDate}
+          error={!!errors.releaseDate}
           helperText={
             errors.releaseDate
               ? errors.releaseDate.message
@@ -73,7 +73,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           inputRef={register({
             required: 'Specify at least on director',
           })}
-          error={errors.directors}
+          error={!!errors.directors}
           helperText={
             errors.directors
               ? errors.directors.message
@@ -87,7 +87,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           inputRef={register({
             required: 'Specify at least on genre',
           })}
-          error={errors.genres}
+          error={!!errors.genres}
           helperText={
             errors.genres ? errors.genres.message : 'Comma separated values'
           }
@@ -112,7 +112,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                     'Season count must be an integer',
                 },
               })}
-              error={errors.seasonCount}
+              error={!!errors.seasonCount}
               helperText={errors.seasonCount ? errors.seasonCount.message : ''}
             />
             <TextField
@@ -128,12 +128,12 @@ export const DialogForm = ({ onFormSubmit }) => {
                     'Specify length of each season',
                 },
               })}
-              error={errors.seasonEpisodes}
+              error={!!errors.seasonEpisodes}
               helperText={
                 errors.seasonEpisodes ? errors.seasonEpisodes.message : ''
               }
             />
-            <div class='episode-input-group small-input'>
+            <div className='episode-input-group small-input'>
               <Typography variant='h6'>Latest episode</Typography>
               <TextField
                 label='Season'
@@ -152,7 +152,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                       'Season must be an integer',
                   },
                 })}
-                error={errors.seasonCount}
+                error={!!errors.seasonCount}
                 helperText={
                   errors.seasonCount ? errors.seasonCount.message : ''
                 }
@@ -174,7 +174,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                       'Number must be an integer',
                   },
                 })}
-                error={errors.seasonCount}
+                error={!!errors.seasonCount}
                 helperText={
                   errors.seasonCount ? errors.seasonCount.message : ''
                 }
@@ -186,7 +186,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                 inputRef={register({
                   required: 'Release date is  is required',
                 })}
-                error={errors.latestReleaseDate}
+                error={!!errors.latestReleaseDate}
                 helperText={
                   errors.latestReleaseDate
                     ? errors.latestReleaseDate.message
@@ -195,7 +195,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                 margin='normal'
               />
             </div>
-            <div class='episode-input-group small-input'>
+            <div className='episode-input-group small-input'>
               <Typography variant='h6'>Next episode</Typography>
               <TextField
                 label='Season'
@@ -214,7 +214,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                       'Season must be an integer',
                   },
                 })}
-                error={errors.seasonCount}
+                error={!!errors.seasonCount}
                 helperText={
                   errors.seasonCount ? errors.seasonCount.message : ''
                 }
@@ -236,7 +236,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                       'Number must be an integer',
                   },
                 })}
-                error={errors.seasonCount}
+                error={!!errors.seasonCount}
                 helperText={
                   errors.seasonCount ? errors.seasonCount.message : ''
                 }
@@ -248,7 +248,7 @@ export const DialogForm = ({ onFormSubmit }) => {
                 inputRef={register({
                   required: 'Release date is required',
                 })}
-                error={errors.latestReleaseDate}
+                error={!!errors.latestReleaseDate}
                 helperText={
                   errors.latestReleaseDate
                     ? errors.latestReleaseDate.message
@@ -267,7 +267,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           inputRef={register({
             required: 'Plot is required',
           })}
-          error={errors.plot}
+          error={!!errors.plot}
           helperText={errors.plot ? errors.plot.message : ''}
         />
         <TextField
@@ -277,7 +277,7 @@ export const DialogForm = ({ onFormSubmit }) => {
           inputRef={register({
             required: 'Poster image url is required',
           })}
-          error={errors.imageUrl}
+          error={!!errors.imageUrl}
           helperText={errors.imageUrl ? errors.imageUrl.message : ''}
         />
         <TextField
