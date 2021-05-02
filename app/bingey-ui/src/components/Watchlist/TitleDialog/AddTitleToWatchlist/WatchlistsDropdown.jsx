@@ -18,8 +18,7 @@ export const WatchlistsDropdown = ({
     <Popover
       open={open}
       anchorEl={anchorEl}
-      anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
-      transformOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+      anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
       disablePortal
       className='dropdown'
     >
