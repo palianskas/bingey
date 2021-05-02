@@ -1,0 +1,31 @@
+$height: 8em;
+$width: 25em;
+
+$smBreakpoint: 600px;
+
+.item {
+  height: $height;
+  width: $width !important;
+  padding: 0 !important;
+  justify-content: space-between !important;
+  cursor: pointer;
+}
+
+.text {
+  margin: auto 0 !important;
+  padding: 1em;
+}
+
+.primary {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.secondary {
+  opacity: 50%;
+}
+
+.image {
+  height: $height;
+}

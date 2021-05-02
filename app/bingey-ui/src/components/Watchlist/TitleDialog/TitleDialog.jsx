@@ -20,27 +20,27 @@ export const TitleDialog = ({ title, onClose, open }) => {
   return (
     <div className='center centerFlex'>
       <BasicDialog
-        dialogTitle={title.name}
+        dialogTitle={title?.name}
         isDialogOpen={open}
         onDialogClose={handleCloseDialog}
       >
         <DialogContent>
           <CardMedia
             className={`center mediaDialog`}
-            image={title.imageUrl}
+            image={title?.imageUrl}
             title='Poster'
           />
           <CardContent>
             <Typography variant='body1' color='text' component='p'>
-              {title.upcomingItem}: {title.releaseDate}
+              {title?.upcomingItem}: {title?.releaseDate}
             </Typography>
 
             <Typography variant='body1' color='text'>
-              Rating: {title.rating}
+              Rating: {title?.rating}
             </Typography>
           </CardContent>
           <DialogContentText id='alert-dialog-slide-description'>
-            {title.description}
+            {title?.description}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
