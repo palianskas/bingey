@@ -25,7 +25,9 @@ export const BasicDialog = ({
       aria-describedby='alert-dialog-slide-description'
     >
       <div className='header-container'>
-        <DialogTitle className='title'>{dialogTitle}</DialogTitle>
+        <DialogTitle className='title' disableTypography title={title?.name}>
+          {title?.name}
+        </DialogTitle>
       </div>
       {children}
     </DialogUI>
