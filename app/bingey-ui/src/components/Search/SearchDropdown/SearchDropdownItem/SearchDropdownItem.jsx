@@ -5,7 +5,7 @@ import './searchDropdownItemStyle.scss';
 export const SearchDropdownItem = ({ item, onClick }) => {
   return (
     <div onClick={onClick}>
-      <ListItem className='item' alignItems='flex-start'>
+      <ListItem className='item' alignItems='flex-start' button>
         <ListItemText
           className='text'
           primary={
