@@ -20,7 +20,7 @@ export const WatchlistsDropdown = ({
       anchorEl={anchorEl}
       anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
       disablePortal
-      className='dropdown'
+      className='watchlists-dropdown'
     >
       <Paper>
         <ClickAwayListener onClickAway={onClose}>
@@ -28,14 +28,14 @@ export const WatchlistsDropdown = ({
             {watchlists.map((watchlist) => (
               <MenuItem
                 onClick={() => onItemClick(watchlist)}
-                className='item'
+                className='watchlists-dropdown-item'
                 key={watchlist?._id}
               >
                 <span
                   className={
                     watchlist?._id == selectedWatchlistId
-                      ? 'item-text selected'
-                      : 'item-text'
+                      ? 'watchlists-dropdown-item-text selected'
+                      : 'watchlists-dropdown-item-text'
                   }
                 >
                   {watchlist?.name}

@@ -64,6 +64,7 @@ export const Search = () => {
           input: 'inputBase',
         }}
         inputProps={{ 'aria-label': 'search' }}
+        autoComplete='off'
         ref={searchRef}
         onClick={handleOpenDropdown}
         onBlur={() => setTimeout(handleCloseDropdown, 100)}

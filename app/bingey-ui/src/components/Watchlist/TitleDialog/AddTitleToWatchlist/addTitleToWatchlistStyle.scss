@@ -1,13 +1,14 @@
-.dropdown {
+.watchlists-dropdown {
   max-height: 25vh;
+  margin: 0 !important;
 }
 
-.item {
+.watchlists-dropdown-item {
   max-width: 14em;
   margin: 0.25em 0 !important;
 }
 
-.item-text {
+.watchlists-dropdown-item-text {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
