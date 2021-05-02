@@ -1,6 +1,5 @@
 import React from 'react';
 import 'components/Watchlist/TitleDialog/titleDialogStyle.scss';
-import AddIcon from '@material-ui/icons/Add';
 import {
   Button,
   DialogActions,
@@ -11,6 +10,7 @@ import {
   DialogContentText,
 } from '@material-ui/core';
 import { BasicDialog } from 'components/Dialogs/BasicDialog';
+import { AddTitleToWatchlistController } from 'components/Watchlist/TitleDialog/AddTitleToWatchlist/AddTitleToWatchlistController';
 
 export const TitleDialog = ({ title, onClose, open }) => {
   const handleCloseDialog = () => {
@@ -44,17 +44,7 @@ export const TitleDialog = ({ title, onClose, open }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            variant='outlined'
-            className='add-button'
-            fullWidth
-            color='primary'
-            size='large'
-            endIcon={<AddIcon />}
-            onClick={() => {}}
-          >
-            Add title
-          </Button>
+          <AddTitleToWatchlistController title={title} />
         </DialogActions>
       </BasicDialog>
     </div>

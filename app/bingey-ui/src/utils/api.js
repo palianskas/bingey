@@ -31,6 +31,14 @@ const getWatchlistById = async (id) => {
   return (await axios.get(`${BASE_URL}/watchlists/${id}`)).data;
 };
 
+const addTitleToWatchlist = async (id, title) => {
+  try {
+    return (await axios.put(`${BASE_URL}/watchlists/${id}`, title)).data;
+  } catch (error) {
+    // handle error
+  }
+};
+
 const createWatchlist = async (watchlist) => {
   try {
     return (await axios.post(`${BASE_URL}/watchlists`, watchlist)).data;
@@ -44,5 +52,6 @@ export default {
   createTitle,
   getWatchlists,
   getWatchlistById,
+  addTitleToWatchlist,
   createWatchlist,
 };
