@@ -20,14 +20,14 @@ export const TitleDialog = ({ title, onClose, open }) => {
   return (
     <div className='center centerFlex'>
       <BasicDialog
-        dialogTitle={title.name}
+        dialogTitle={title?.name}
         isDialogOpen={open}
         onDialogClose={handleCloseDialog}
       >
         <DialogContent>
           <CardMedia
             className={`center mediaDialog`}
-            image={title.imageUrl}
+            image={title?.imageUrl}
             title='Poster'
           />
           <CardContent>

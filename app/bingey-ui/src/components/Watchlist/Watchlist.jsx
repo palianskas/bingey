@@ -82,7 +82,7 @@ export const Watchlist = () => {
         </Button>
       </div>
       <Grid container spacing={2}>
-        {watchlist?.titles.map((title) => (
+        {watchlist?.titles?.map((title) => (
           <Grid key={title._id} item xs={6} sm={4} md={3} xl={2}>
             <TitleCard title={title} />
           </Grid>

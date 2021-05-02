@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Collapse, Paper } from '@material-ui/core';
 
 import { SearchDropdownItem } from 'components/Search/SearchDropdown/SearchDropdownItem/SearchDropdownItem';
-import TitleDialog from 'components/Watchlist/TitleDialog/TitleDialog';
+import { TitleDialog } from 'components/Watchlist/TitleDialog/TitleDialog';
 
 import './searchDropdownStyle.scss';
 
