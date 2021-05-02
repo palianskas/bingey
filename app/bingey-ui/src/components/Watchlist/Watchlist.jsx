@@ -58,7 +58,7 @@ export const Watchlist = () => {
       setWatchlist(await api.getWatchlistById(id));
     };
     loadWatchlist();
-  }, []);
+  }, [id]);
 
   const handleAddTitle = () => {
     document.getElementById('searchBar').focus();
