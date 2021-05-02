@@ -9,9 +9,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import { AddTitleToWatchlistController } from 'components/Watchlist/TitleDialog/AddTitleToWatchlist/AddTitleToWatchlistController';
+
 import 'components/Watchlist/TitleDialog/titleDialogStyle.scss';
-import AddIcon from '@material-ui/icons/Add';
-import { Button } from '@material-ui/core';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -33,16 +33,7 @@ export default function TitleDialog({ title, onClose, open }) {
       >
         <div className='header-container'>
           <DialogTitle className='title'>{title.name}</DialogTitle>
-          <Button
-            variant='outlined'
-            className='add-button'
-            color='primary'
-            size='large'
-            endIcon={<AddIcon />}
-            onClick={() => {}}
-          >
-            Add title
-          </Button>
+          <AddTitleToWatchlistController title={title} />
         </div>
         <DialogContent>
           <CardMedia
