@@ -1,5 +1,5 @@
 import { useForm, FormProvider } from 'react-hook-form';
-import { Button, DialogActions } from '@material-ui/core';
+import { Button, DialogActions, DialogContent } from '@material-ui/core';
 
 import api from 'utils/api';
 import { DialogForm } from 'admin/components/AddTitleDialog/DialogForm/DialogForm';
@@ -31,9 +31,11 @@ export const AddTitleDialog = ({ isOpen, handleClose }) => {
       isDialogOpen={isOpen}
       onDialogClose={handleClose}
     >
-      <FormProvider {...methods}>
-        <DialogForm onFormSubmit={onFormSubmit} />
-      </FormProvider>
+      <DialogContent>
+        <FormProvider {...methods}>
+          <DialogForm onFormSubmit={onFormSubmit} />
+        </FormProvider>
+      </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button

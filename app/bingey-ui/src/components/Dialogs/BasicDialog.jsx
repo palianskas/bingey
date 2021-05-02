@@ -1,5 +1,5 @@
 import React from 'react';
-import { DialogContent, DialogTitle, Slide } from '@material-ui/core';
+import { DialogTitle, Slide } from '@material-ui/core';
 import DialogUI from '@material-ui/core/Dialog';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -27,7 +27,7 @@ export const BasicDialog = ({
       <div className='header-container'>
         <DialogTitle className='title'>{dialogTitle}</DialogTitle>
       </div>
-      <DialogContent>{children}</DialogContent>
+      {children}
     </DialogUI>
   );
 };

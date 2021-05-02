@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Button,
+  DialogContent,
   ListItem,
   ListItemIcon,
   ListItemText,
@@ -48,30 +49,32 @@ export function WatchlistAdd({ onCreateWatchlist, openDrawer }) {
         isDialogOpen={isDialogOpen}
         onDialogClose={handleDialogClose}
       >
-        <div className={'input-container'}>
-          <TextField
-            id='outlined-basic'
-            label='Name'
-            name='name'
-            required={true}
-            inputRef={register({
-              required: 'Name is required',
-            })}
-            error={!!errors.name}
-            helperText={errors.name ? errors.name.message : ''}
-            variant='outlined'
-            onChange={handleInputChange}
-          />
-          <Button
-            className={'save-button'}
-            type='submit'
-            form='create-watchlist-form'
-            variant='contained'
-            color='primary'
-          >
-            Save
-          </Button>
-        </div>
+        <DialogContent>
+          <div className={'input-container'}>
+            <TextField
+              id='outlined-basic'
+              label='Name'
+              name='name'
+              required={true}
+              inputRef={register({
+                required: 'Name is required',
+              })}
+              error={!!errors.name}
+              helperText={errors.name ? errors.name.message : ''}
+              variant='outlined'
+              onChange={handleInputChange}
+            />
+            <Button
+              className={'save-button'}
+              type='submit'
+              form='create-watchlist-form'
+              variant='contained'
+              color='primary'
+            >
+              Save
+            </Button>
+          </div>
+        </DialogContent>
       </BasicDialog>
     </form>
   );

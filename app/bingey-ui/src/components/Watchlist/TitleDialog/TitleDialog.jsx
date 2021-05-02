@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import DialogContentText from '@material-ui/core/DialogContentText';
-
+import React from 'react';
 import 'components/Watchlist/TitleDialog/titleDialogStyle.scss';
 import AddIcon from '@material-ui/icons/Add';
-import { Button } from '@material-ui/core';
+import {
+  Button,
+  DialogActions,
+  DialogContent,
+  CardContent,
+  CardMedia,
+  Typography,
+  DialogContentText,
+} from '@material-ui/core';
 import { BasicDialog } from 'components/Dialogs/BasicDialog';
 
 export const TitleDialog = ({ title, onClose, open }) => {
@@ -21,34 +24,38 @@ export const TitleDialog = ({ title, onClose, open }) => {
         isDialogOpen={open}
         onDialogClose={handleCloseDialog}
       >
-        <Button
-          variant='outlined'
-          className='add-button'
-          color='primary'
-          size='large'
-          endIcon={<AddIcon />}
-          onClick={() => {}}
-        >
-          Add title
-        </Button>
+        <DialogContent>
+          <CardMedia
+            className={`center mediaDialog`}
+            image={title.imageUrl}
+            title='Poster'
+          />
+          <CardContent>
+            <Typography variant='body1' color='text' component='p'>
+              {title.upcomingItem}: {title.releaseDate}
+            </Typography>
 
-        <CardMedia
-          className={`center mediaDialog`}
-          image={title.imageUrl}
-          title='Poster'
-        />
-        <CardContent>
-          <Typography variant='body1' color='text' component='p'>
-            {title.upcomingItem}: {title.releaseDate}
-          </Typography>
-
-          <Typography variant='body1' color='text'>
-            Rating: {title.rating}
-          </Typography>
-        </CardContent>
-        <DialogContentText id='alert-dialog-slide-description'>
-          {title.description}
-        </DialogContentText>
+            <Typography variant='body1' color='text'>
+              Rating: {title.rating}
+            </Typography>
+          </CardContent>
+          <DialogContentText id='alert-dialog-slide-description'>
+            {title.description}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant='outlined'
+            className='add-button'
+            fullWidth
+            color='primary'
+            size='large'
+            endIcon={<AddIcon />}
+            onClick={() => {}}
+          >
+            Add title
+          </Button>
+        </DialogActions>
       </BasicDialog>
     </div>
   );
