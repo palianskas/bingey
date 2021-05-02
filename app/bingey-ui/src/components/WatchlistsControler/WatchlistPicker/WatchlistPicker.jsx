@@ -4,11 +4,11 @@ import {
   ListItemIcon,
   ListItem,
   ListItemText,
+  Typography,
 } from '@material-ui/core';
 import MovieIcon from '@material-ui/icons/Movie';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import './WatchlistPicker.scss';
-import Typography from '@material-ui/core/Typography';
 
 export const WatchlistPicker = ({
   history,
@@ -18,18 +18,18 @@ export const WatchlistPicker = ({
 }) => {
   const [open, setOpen] = useState(false);
 
-  const handleExpand = () => {
+  const handleExpandChange = () => {
     openDrawer();
     setOpen(!open);
   };
 
   useEffect(() => {
-    setOpen(isDrawerOpen);
+    if (!isDrawerOpen) setOpen(isDrawerOpen);
   }, [isDrawerOpen]);
 
   return (
     <div>
-      <ListItem button onClick={handleExpand} key={'watchlist'}>
+      <ListItem button onClick={handleExpandChange} key={'watchlist'}>
         <ListItemIcon>
           <MovieIcon />
         </ListItemIcon>
@@ -60,7 +60,12 @@ export const WatchlistPicker = ({
                 history.push(`/watchlists/${watchlist._id}`);
               }}
             >
-              {watchlist.name}
+              <ListItemText
+                primary={watchlist.name}
+                disableTypography
+                inset
+                className='item-text'
+              />
             </ListItem>
           ))
         )}
