@@ -11,7 +11,7 @@ export const App = () => {
     <>
       <Router>
         <Switch>
-          <Route exact path='/admin'>
+          <Route path='/admin'>
             <AdminDashboard />
           </Route>
           <Route>

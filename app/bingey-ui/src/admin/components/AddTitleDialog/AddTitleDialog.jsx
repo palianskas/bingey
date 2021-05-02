@@ -1,14 +1,9 @@
 import { useForm, FormProvider } from 'react-hook-form';
-import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  Typography,
-} from '@material-ui/core';
+import { Button, DialogActions, DialogContent } from '@material-ui/core';
 
 import api from 'utils/api';
 import { DialogForm } from 'admin/components/AddTitleDialog/DialogForm/DialogForm';
+import { BasicDialog } from 'components/Dialogs/BasicDialog';
 
 const formatFormData = (data) => {
   data.directors = data.directors.split(',').map((dir) => dir.trim());
@@ -31,20 +26,16 @@ export const AddTitleDialog = ({ isOpen, handleClose }) => {
   };
 
   return (
-    <Dialog
-      open={isOpen}
-      onClose={handleClose}
-      aria-labelledby='form-dialog-title'
-      fullWidth
+    <BasicDialog
+      dialogTitle={'Create new title'}
+      isDialogOpen={isOpen}
+      onDialogClose={handleClose}
     >
-      <DialogTitle id='form-dialog-title'>
-        <Typography variant='h5' style={{ fontWeight: 600 }}>
-          Create new title
-        </Typography>
-      </DialogTitle>
-      <FormProvider {...methods}>
-        <DialogForm onFormSubmit={onFormSubmit} />
-      </FormProvider>
+      <DialogContent>
+        <FormProvider {...methods}>
+          <DialogForm onFormSubmit={onFormSubmit} />
+        </FormProvider>
+      </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
         <Button
@@ -56,6 +47,6 @@ export const AddTitleDialog = ({ isOpen, handleClose }) => {
           Create
         </Button>
       </DialogActions>
-    </Dialog>
+    </BasicDialog>
   );
 };
