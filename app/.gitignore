@@ -1,0 +1,5 @@
+bingey-api/node_modules
+bingey-ui/node_modules
+.idea
+docker/mongo
+.env

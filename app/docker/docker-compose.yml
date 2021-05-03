@@ -1,26 +1,39 @@
 version: "3.7"
 
+networks:
+  public:
+    driver: bridge
+  private:
+    driver: bridge
+
 services:
-  mongodb:
-    container_name: mongo
+  mongo-bingey:
+    container_name: mongo-bingey
     image: mongo
     environment:
       - MONGO_INITDB_DATABASE=auth
       - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD}
     restart: always
+    networks:
+      - private
+    volumes:
+      - ./mongo/database:/data/db
     ports:
       - '27017:27017'
-  mongo-express:
-    container_name: mongo-express
+  mongo-express-bingey:
+    container_name: mongo-express-bingey
     image: mongo-express
-    depends_on:
-      - mongodb
+    networks:
+      - private
+      - public
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_PASSWORD}
-      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_SERVER=mongo-bingey
       - ME_CONFIG_BASICAUTH_USERNAME=${MONGODB_USERNAME}
       - ME_CONFIG_BASICAUTH_PASSWORD=${MONGODB_PASSWORD}
     ports:
       - '8081:8081'
+    depends_on:
+      - mongo-bingey
