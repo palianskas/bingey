@@ -34,6 +34,6 @@ services:
       - ME_CONFIG_BASICAUTH_USERNAME=${MONGODB_USERNAME}
       - ME_CONFIG_BASICAUTH_PASSWORD=${MONGODB_PASSWORD}
     ports:
-      - '8081:8081'
+      - '8082:8081'
     depends_on:
       - mongo-bingey
