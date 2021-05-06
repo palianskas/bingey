@@ -2,6 +2,16 @@ const { check, oneOf, validationResult } = require('express-validator');
 
 const Title = require('$/models/title');
 
+const getTitleById = async (req, res) => {
+  try {
+    const title = await Title.findById(req.params.id);
+    
+    res.json(title);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 const createTitle = async (req, res, next) => {
   try {
     const errors = validationResult(req).errors;
@@ -155,4 +165,5 @@ const parseTitle = (req) => {
 module.exports = {
   validate: validate,
   createTitle: createTitle,
+  getTitleById: getTitleById,
 };
