@@ -47,6 +47,24 @@ const addTitleToWatchlist = async (req, res) => {
   }
 };
 
+
+const deleteWatchlist = async (req, res) => {
+  try {
+    let watchlistId = req.params.id;
+    
+    Watchlist.findByIdAndRemove(watchlistId, (err, watchlist) => {
+      if (err) {
+        res.status(400).json({ errors: err });
+        return;
+      }
+      res.json(watchlistId);
+    });
+
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 const createWatchlist = async (req, res, next) => {
   try {
     const errors = validationResult(req).errors;
@@ -133,4 +151,5 @@ module.exports = {
   getWatchlistById: getWatchlistById,
   createWatchlist: createWatchlist,
   addTitleToWatchlist: addTitleToWatchlist,
+  deleteWatchlist: deleteWatchlist,
 };
