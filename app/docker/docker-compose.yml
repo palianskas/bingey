@@ -20,7 +20,7 @@ services:
     volumes:
       - ./mongo/database:/data/db
     ports:
-      - '27017:27017'
+      - '27018:27017'
   mongo-express-bingey:
     container_name: mongo-express-bingey
     image: mongo-express
