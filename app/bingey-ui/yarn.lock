@@ -11193,6 +11193,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-click-away@^12.0.1:
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/use-click-away/-/use-click-away-12.0.1.tgz#61586f1540704cf4d6661e981021356eba107092"
+  integrity sha512-eAFl3vZd5EiAR51Mr0ZcB7cv5hiTd09av29hSf0ykQHetLBeWKQIQHfSzSEfs7bqtXl7seiQNkMa3aApiS2Uaw==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
