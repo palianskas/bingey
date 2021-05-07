@@ -2,18 +2,51 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080';
 
+const TMBD_API_URL = 'https://api.themoviedb.org/4';
+const TMBD_API_KEY = '';
+
 const formatStringForSearch = (value) => {
   return value.toLowerCase().replace(' ', '+');
 };
 
-const search = async (queryString) => {
-  queryString = formatStringForSearch(queryString);
-  try {
-    return (await axios.get(`${BASE_URL}/search?q=${queryString}`)).data;
-  } catch (error) {
-    // handle error
-  }
+const searchResultCache = {};
+
+const makeSearchRequestCreator = () => {
+  let cancelToken;
+
+  return async (queryString) => {
+    if (cancelToken) {
+      cancelToken.cancel();
+    }
+
+    cancelToken = axios.CancelToken.source();
+
+    try {
+      if (searchResultCache[queryString]) {
+        return searchResultCache[queryString];
+      }
+
+      const res = await axios.get(
+        `${TMBD_API_URL}/search/multi?api_key=${TMBD_API_KEY}&query=${queryString}`,
+        {
+          cancelToken: cancelToken.token,
+        }
+      );
+
+      const result = res.data.results;
+
+      searchResultCache[queryString] = result;
+
+      return result;
+    } catch (error) {
+      if (!axios.isCancel(error)) {
+        // handle error
+      }
+    }
+  };
 };
+
+const search = makeSearchRequestCreator();
 
 const createTitle = async (title) => {
   try {
