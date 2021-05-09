@@ -1,10 +1,15 @@
-.center{
-    text-align: center;
-}
-.card{
-    aspect-ratio: 5/7;
+.card {
+  aspect-ratio: 5/7;
 }
 
-.media{
-    padding-top: 80%;
+.card-action-area {
+  height: 100%;
+}
+
+.card-media {
+  height: 70%;
+}
+
+.card-content {
+  height: 100%;
 }

@@ -7,8 +7,9 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import 'components/Watchlist/TitleCard/titleCardStyle.scss';
 import { TitleDialog } from 'components/Watchlist/TitleDialog/TitleDialog';
+
+import './titleCardStyle.scss';
 
 export default function TitleCard({ title }) {
   const [open, setOpen] = useState(false);
@@ -21,20 +22,21 @@ export default function TitleCard({ title }) {
     setOpen(false);
   };
 
+  // TODO redesign add-title card too
+
   return (
     <div>
-      <Card className='card' elevation={5}>
-        <CardActionArea onClick={handleOpenDialog}>
-          <CardMedia className='media' image={title.imageUrl} title='Poster' />
-          <CardContent>
-            <Typography className='center' gutterBottom variant='h5'>
-              {title.name}
-            </Typography>
-            <Typography variant='body1'>
-              {title.upcomingItem}: {title.releaseDate}
-            </Typography>
-
-            <Typography variant='body1'>Genre: {title.genre}</Typography>
+      <Card className='card' elevation={3}>
+        <CardActionArea onClick={handleOpenDialog} className='card-action-area'>
+          <CardMedia
+            component='img'
+            alt={`${title?.name} poster`}
+            image={title?.imageUrl}
+            title={`${title?.name} poster`}
+            className='card-media'
+          />
+          <CardContent className='card-content'>
+            <Typography variant='h6'>{title?.name}</Typography>
           </CardContent>
         </CardActionArea>
       </Card>
