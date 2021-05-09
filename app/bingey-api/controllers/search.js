@@ -29,7 +29,7 @@ const parseTitle = (resultTitle) => {
 };
 
 const searchTitle = async (req, res) => {
-  let query = req.query.q; //get title
+  let query = req.query.q;
 
   Title.find({ name: { $regex: query, $options: 'i' } }, (err, docs) => {
     if (err) {
