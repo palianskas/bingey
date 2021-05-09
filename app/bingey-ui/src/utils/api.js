@@ -2,9 +2,6 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080';
 
-const TMBD_API_URL = 'https://api.themoviedb.org/4';
-const TMBD_API_KEY = '';
-
 const formatStringForSearch = (value) => {
   return value.toLowerCase().replace(' ', '+');
 };
@@ -15,6 +12,8 @@ const makeSearchRequestCreator = () => {
   let cancelToken;
 
   return async (queryString) => {
+    queryString = formatStringForSearch(queryString);
+
     if (cancelToken) {
       cancelToken.cancel();
     }
@@ -26,12 +25,9 @@ const makeSearchRequestCreator = () => {
         return searchResultCache[queryString];
       }
 
-      const res = await axios.get(
-        `${TMBD_API_URL}/search/multi?api_key=${TMBD_API_KEY}&query=${queryString}`,
-        {
-          cancelToken: cancelToken.token,
-        }
-      );
+      const res = await axios.get(`${BASE_URL}/?q=${queryString}`, {
+        cancelToken: cancelToken.token,
+      });
 
       const result = res.data.results;
 
