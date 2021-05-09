@@ -1,4 +1,14 @@
 .dropdown {
   position: absolute;
   top: 29px;
+  overflow-y: auto;
+  max-height: 5 * 8em + 0.33em !important;
+}
+
+.dropdown-spinner {
+  display: flex;
+  width: 25em !important;
+  height: 8em !important;
+  justify-content: center;
+  align-items: center;
 }
