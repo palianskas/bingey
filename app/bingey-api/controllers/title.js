@@ -2,14 +2,13 @@ const { check, oneOf, validationResult } = require('express-validator');
 
 const Title = require('$/models/title');
 
-
 const getTitleById = async (req, res) => {
   try {
     const title = await Title.findById(req.params.id);
 
-    res.json(title);
+    res.json({ title: title });
   } catch (err) {
-    res.json({ errors: errors });
+    res.status(400).json({ errors: err });
   }
 };
 
