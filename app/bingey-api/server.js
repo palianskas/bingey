@@ -7,10 +7,10 @@ const searchRoutes = require('$/routes/search');
 const titleRoutes = require('$/routes/title');
 const watchlistRoutes = require('$/routes/watchlist');
 
-const { MONGODB_HOSTNAME, MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
+const { MONGODB_HOSTNAME, MONGODB_USERNAME, MONGODB_PASSWORD, MONGODB_PORT } = process.env;
 
 mongoose.connect(
-  `mongodb://${MONGODB_HOSTNAME}:27017`,
+  `mongodb://${MONGODB_HOSTNAME}:${MONGODB_PORT}`,
   {
     dbName: 'bingey',
     auth: {
