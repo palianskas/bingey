@@ -8,7 +8,7 @@ const getTitleById = async (req, res) => {
 
     res.json({ title: title });
   } catch (err) {
-    res.status(400).json({ errors: err });
+    res.status(404).json({ errors: err });
   }
 };
 
