@@ -49,19 +49,11 @@ const addTitleToWatchlist = async (req, res) => {
 const deleteWatchlist = async (req, res) => {
   try {
     const watchlistId = req.params.id;
-
-    Watchlist.deleteOne({ _id: watchlistId }, (err, result) => {
-      if (err) {
-        res.status(400).json({ errors: err });
-        return;
-      } else if (result.ok != 1) {
-        res.status(404).json();
-      }
-      res.status(204).json();
-    });
+    const query = await Watchlist.deleteOne({ _id: watchlistId });
   } catch (err) {
-    res.status(400).json({ errors: err });
+    res.status(405).json({ errors: err });
   }
+  res.status(204).json();
 };
 
 const createWatchlist = async (req, res, next) => {

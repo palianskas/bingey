@@ -10,7 +10,7 @@ const watchlistRoutes = require('$/routes/watchlist');
 const { MONGODB_HOSTNAME, MONGODB_USERNAME, MONGODB_PASSWORD } = process.env;
 
 mongoose.connect(
-  `mongodb://${MONGODB_HOSTNAME}:27017`,
+  `mongodb://${MONGODB_HOSTNAME}:27018`,
   {
     dbName: 'bingey',
     auth: {
