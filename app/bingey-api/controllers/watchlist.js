@@ -50,10 +50,18 @@ const deleteWatchlist = async (req, res) => {
   try {
     const watchlistId = req.params.id;
     const query = await Watchlist.deleteOne({ _id: watchlistId });
+
+    if (query.deletedCount == 1 && query.ok == 1) {
+      res.status(204).json();
+      return;
+    } else {
+      res.status(404).json({ errors: 'Watchlist not found' });
+      return;
+    }
   } catch (err) {
     res.status(405).json({ errors: err });
+    return;
   }
-  res.status(204).json();
 };
 
 const createWatchlist = async (req, res, next) => {
