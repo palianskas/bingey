@@ -45,7 +45,7 @@ const searchTitle = async (req, res) => {
       return;
     }
 
-    res.json({ results: parseSearchResults(docs) });
+    res.json({ results: parseSearchResults(docs.splice(0, 10)) });
   });
 };
 
