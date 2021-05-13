@@ -1,5 +1,5 @@
-$lgBreakpoint: 1400px;
-$xsBreakpoint: 600px;
+$lgBreakpoint: 1399px;
+$xsBreakpoint: 599px;
 
 .card {
   aspect-ratio: 1/1.618;
@@ -27,7 +27,7 @@ $xsBreakpoint: 600px;
 }
 
 .card-content-release-date {
-  font-size: 1.5em !important;
+  font-size: 1.25em !important;
 }
 
 .card-content-genres {
@@ -53,7 +53,7 @@ $xsBreakpoint: 600px;
 
 @media (max-width: #{$lgBreakpoint}) {
   .card-content-name {
-    font-size: 1.5em !important;
+    font-size: 1.75em !important;
   }
 
   .card-content-release-date {
@@ -71,7 +71,7 @@ $xsBreakpoint: 600px;
   }
 
   .card-content-release-date {
-    font-size: 1.5em !important;
+    font-size: 1.25em !important;
   }
 
   .card-content-genres {
