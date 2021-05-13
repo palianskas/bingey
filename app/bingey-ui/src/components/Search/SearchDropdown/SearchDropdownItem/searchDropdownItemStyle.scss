@@ -1,3 +1,4 @@
+$smBreakpoint: 600px;
 $height: 8em;
 $width: 25em;
 
@@ -29,4 +30,11 @@ $width: 25em;
   max-width: $height / 1.5;
   object-fit: cover;
   object-position: center;
+  overflow: hidden;
+}
+
+@media (max-width: #{$smBreakpoint}) {
+  .search-dropdown-item {
+    width: 80vw !important;
+  }
 }

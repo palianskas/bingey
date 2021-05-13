@@ -24,12 +24,12 @@ $smBreakpoint: 600px;
 
 .inputRoot {
   color: inherit !important;
+  width: 100% !important;
 }
 
 .inputBase {
   padding: 5px 5px 5px 0 !important;
   padding-left: 40px !important;
-  width: 100% !important;
 }
 
 @media (min-width: #{$smBreakpoint}) {
