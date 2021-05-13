@@ -15,7 +15,7 @@ const getWatchlists = async (req, res) => {
 const getWatchlistById = async (req, res) => {
   try {
     const watchlist = await Watchlist.findById(req.params.id);
-    
+
     res.json(watchlist);
   } catch (err) {
     res.json(err);
@@ -33,7 +33,7 @@ const addTitleToWatchlist = async (req, res) => {
     const watchlist = await Watchlist.findById(req.params.id);
     const title = parseTitle(req);
     watchlist.titles.push(title);
-    
+
     watchlist.save((err, watchlist) => {
       if (err) {
         res.status(400).json({ errors: err });
@@ -41,9 +41,26 @@ const addTitleToWatchlist = async (req, res) => {
       }
       res.json(watchlist);
     });
-
   } catch (err) {
     res.json(err);
+  }
+};
+
+const deleteWatchlist = async (req, res) => {
+  try {
+    const watchlistId = req.params.id;
+    const query = await Watchlist.deleteOne({ _id: watchlistId });
+
+    if (query.deletedCount == 1 && query.ok == 1) {
+      res.status(204).json();
+      return;
+    } else {
+      res.status(404).json({ errors: 'Watchlist not found' });
+      return;
+    }
+  } catch (err) {
+    res.status(405).json({ errors: err });
+    return;
   }
 };
 
@@ -103,7 +120,7 @@ const validate = (method) => {
           .notEmpty(),
         check('upcomingEpisode.releaseDate', 'Upcoming episode release date format is invalid')
           .if(check('isMovie').isIn(['false', 'False', '0']))
-          .isDate()
+          .isDate(),
       ];
     }
   }
@@ -114,7 +131,6 @@ const parseWatchlist = (req) => {
     name: req.body.name,
   });
 };
-
 
 const parseTitle = (req) => {
   return new Title({
@@ -133,4 +149,5 @@ module.exports = {
   getWatchlistById: getWatchlistById,
   createWatchlist: createWatchlist,
   addTitleToWatchlist: addTitleToWatchlist,
+  deleteWatchlist: deleteWatchlist,
 };

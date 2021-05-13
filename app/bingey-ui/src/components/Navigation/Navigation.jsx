@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+
+import { useClickAway } from 'use-click-away';
 
 import { NavigationAppBar } from 'components/Navigation/Appbar/Appbar';
 import { NavigationDrawer } from 'components/Navigation/Drawer/Drawer';
@@ -18,8 +20,12 @@ export const Navigation = ({ title, drawerWidth }) => {
     setIsDrawerOpen(false);
   };
 
+  const clickRef = useRef(null);
+
+  useClickAway(clickRef, handleDrawerClose);
+
   return (
-    <>
+    <div ref={clickRef}>
       <NavigationAppBar
         title={title}
         isDrawerOpen={isDrawerOpen}
@@ -32,7 +38,7 @@ export const Navigation = ({ title, drawerWidth }) => {
         onClose={handleDrawerClose}
         onOpen={handleDrawerOpen}
       />
-    </>
+    </div>
   );
 };
 
