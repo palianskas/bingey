@@ -2,11 +2,15 @@ import React, { useState, useRef } from 'react';
 import { InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
+
 import api from 'utils/api';
 
 import { SearchDropdown } from './SearchDropdown/SearchDropdown';
 
 import './searchStyle.scss';
+
+const debouncedApiSearch = AwesomeDebouncePromise(api.search, 500);
 
 export const Search = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
@@ -24,9 +28,13 @@ export const Search = () => {
   };
 
   const handleInputChange = async (event) => {
+    if (!titles && event.target.value.trim().length < 1) {
+      return;
+    }
+
     setIsQueryInProgress(true);
 
-    const result = await api.search(event.target.value);
+    const result = await debouncedApiSearch(event.target.value);
 
     setTitles(result);
 
