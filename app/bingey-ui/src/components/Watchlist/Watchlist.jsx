@@ -14,10 +14,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
   },
-  paper: {
-    textAlign: 'center',
-    backgroundColor: '#c4c4c4',
-  },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -31,18 +27,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
-  },
-  addTitleCard: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    aspectRatio: 5 / 7,
-    cursor: 'pointer',
-  },
-  addTitleIcon: {
-    height: 'unset',
-    width: 'unset',
-    opacity: '25%',
   },
 }));
 
@@ -88,11 +72,8 @@ export const Watchlist = () => {
           </Grid>
         ))}
         <Grid item xs={12} sm={6} md={4} xl={2}>
-          <Paper
-            onClick={handleAddTitle}
-            className={clsx(classes.paper, classes.addTitleCard)}
-          >
-            <AddCircleOutlineIcon className={classes.addTitleIcon} />
+          <Paper onClick={handleAddTitle} className='card add-title-card'>
+            <AddCircleOutlineIcon className='add-title-icon' />
           </Paper>
         </Grid>
       </Grid>

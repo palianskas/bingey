@@ -36,6 +36,21 @@ $xsBreakpoint: 600px;
   padding-bottom: 2em;
 }
 
+.add-title-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  background-color: lightgray !important;
+}
+
+.add-title-icon {
+  height: unset !important;
+  width: unset !important;
+  opacity: 25%;
+}
+
 @media (max-width: #{$lgBreakpoint}) {
   .card-content-name {
     font-size: 1.5em !important;
