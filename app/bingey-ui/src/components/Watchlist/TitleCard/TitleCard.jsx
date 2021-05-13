@@ -46,16 +46,20 @@ export default function TitleCard({ title }) {
               <Typography
                 variant='subtitle1'
                 className='card-content-release-date'
-              >{`Next episode release date: ${
-                title?.upcomingEpisode?.releaseDate.split('T')[0]
-              }`}</Typography>
+              >
+                Next episode release date:
+                <strong>{` ${
+                  title?.upcomingEpisode?.releaseDate.split('T')[0]
+                }`}</strong>
+              </Typography>
             ) : (
               <Typography
                 variant='subtitle1'
                 className='card-content-release-date'
-              >{`Release date: ${
-                title?.releaseDate.split('T')[0]
-              }`}</Typography>
+              >
+                Release date:
+                <strong>{` ${title?.releaseDate.split('T')[0]}`}</strong>
+              </Typography>
             )}
             <Typography
               variant='subtitle2'
