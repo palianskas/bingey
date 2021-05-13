@@ -5,23 +5,27 @@ import './searchDropdownItemStyle.scss';
 export const SearchDropdownItem = ({ item, onClick }) => {
   return (
     <div onClick={onClick}>
-      <ListItem className='dropdown-item' alignItems='flex-start' button>
+      <ListItem className='search-dropdown-item' alignItems='flex-start' button>
         <ListItemText
-          className='text'
+          className='search-dropdown-text'
           primary={
-            <Typography variant='h5' className='primary' title={item?.name}>
+            <Typography
+              variant='h5'
+              className='search-dropdown-primary'
+              title={item?.name}
+            >
               {item?.name}
             </Typography>
           }
           secondary={
-            <Typography variant='h5' className='secondary'>
+            <Typography variant='h5' className='search-dropdown-secondary'>
               {item?.releaseDate}
             </Typography>
           }
         />
         <img
           src={item?.imageUrl}
-          className='image'
+          className='search-dropdown-image'
           alt={`${item?.name} poster`}
         ></img>
       </ListItem>
