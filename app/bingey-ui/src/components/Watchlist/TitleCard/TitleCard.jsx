@@ -22,11 +22,9 @@ export default function TitleCard({ title }) {
     setOpen(false);
   };
 
-  // TODO redesign add-title card too
-
   return (
     <div>
-      <Card className='card' elevation={3}>
+      <Card className='card' elevation={0}>
         <CardActionArea onClick={handleOpenDialog} className='card-action-area'>
           <CardMedia
             component='img'
@@ -36,7 +34,39 @@ export default function TitleCard({ title }) {
             className='card-media'
           />
           <CardContent className='card-content'>
-            <Typography variant='h6'>{title?.name}</Typography>
+            <Typography
+              variant='h6'
+              noWrap
+              title={title?.name}
+              className='card-content-name'
+            >
+              {title?.name}
+            </Typography>
+            {!!title?.upcomingEpisode ? (
+              <Typography
+                variant='subtitle1'
+                className='card-content-release-date'
+              >{`Next episode release date: ${
+                title?.upcomingEpisode?.releaseDate.split('T')[0]
+              }`}</Typography>
+            ) : (
+              <Typography
+                variant='subtitle1'
+                className='card-content-release-date'
+              >{`Release date: ${
+                title?.releaseDate.split('T')[0]
+              }`}</Typography>
+            )}
+            <Typography
+              variant='subtitle2'
+              className='card-content-genres'
+              noWrap
+            >
+              {title?.genres?.map(
+                (genre, index, genres) =>
+                  `${genre}${index != genres.length - 1 ? ', ' : ''}`
+              )}
+            </Typography>
           </CardContent>
         </CardActionArea>
       </Card>

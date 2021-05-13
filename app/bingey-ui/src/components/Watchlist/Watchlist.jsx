@@ -83,11 +83,11 @@ export const Watchlist = () => {
       </div>
       <Grid container spacing={2}>
         {watchlist?.titles?.map((title) => (
-          <Grid key={title._id} item xs={6} sm={4} md={3} xl={2}>
+          <Grid key={title._id} item xs={12} sm={6} md={4} xl={2}>
             <TitleCard title={title} />
           </Grid>
         ))}
-        <Grid item xs={6} sm={4} md={3} xl={2}>
+        <Grid item xs={12} sm={6} md={4} xl={2}>
           <Paper
             onClick={handleAddTitle}
             className={clsx(classes.paper, classes.addTitleCard)}
