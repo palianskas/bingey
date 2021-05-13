@@ -6,6 +6,7 @@ const parseSearchResults = (results) => {
 
 const parseTitle = (resultTitle) => {
   return {
+    _id: resultTitle._id,
     isCustom: resultTitle.isCustom,
     name: resultTitle.name,
     releaseDate: resultTitle.releaseDate.toLocaleString('lt-LT').split(' ')[0],
