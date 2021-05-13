@@ -26,4 +26,7 @@ $width: 25em;
 
 .search-dropdown-image {
   height: $height;
+  max-width: $height / 1.5;
+  object-fit: cover;
+  object-position: center;
 }
