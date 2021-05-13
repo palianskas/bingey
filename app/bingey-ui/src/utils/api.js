@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:8080';
 
 const formatStringForSearch = (value) => {
-  return value.toLowerCase().replace(' ', '+');
+  return value.trim().toLowerCase().replace(/\s+/g, '+');
 };
 
 const searchResultCache = {};
