@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, Button } from '@material-ui/core';
 
