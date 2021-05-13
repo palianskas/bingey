@@ -140,6 +140,7 @@ const parseTitle = (req) => {
     isMovie: req.body.isMovie,
     upcomingEpisode: req.body.upcomingEpisode,
     imageUrl: req.body.imageUrl,
+    genres: req.body.genres,
   });
 };
 

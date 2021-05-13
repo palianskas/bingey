@@ -29,6 +29,7 @@ const watchlistSchema = new Schema(
           number: Number,
           releaseDate: Date,
         },
+        genres: [String],
       },
     ],
   },
