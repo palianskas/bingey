@@ -36,7 +36,7 @@ const makeSearchRequestCreator = () => {
       return result;
     } catch (error) {
       if (!axios.isCancel(error)) {
-        // handle error
+        return [];
       }
     }
   };
