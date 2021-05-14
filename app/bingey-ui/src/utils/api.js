@@ -14,6 +14,10 @@ const makeSearchRequestCreator = () => {
   return async (queryString) => {
     queryString = formatStringForSearch(queryString);
 
+    if (queryString.length < 1) {
+      return [];
+    }
+
     if (cancelToken) {
       cancelToken.cancel();
     }
