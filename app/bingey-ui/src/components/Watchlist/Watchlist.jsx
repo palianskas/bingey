@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, Button } from '@material-ui/core';
 
@@ -13,10 +12,6 @@ import api from 'utils/api';
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
-  },
-  paper: {
-    textAlign: 'center',
-    backgroundColor: '#c4c4c4',
   },
   header: {
     display: 'flex',
@@ -31,18 +26,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
-  },
-  addTitleCard: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    aspectRatio: 5 / 7,
-    cursor: 'pointer',
-  },
-  addTitleIcon: {
-    height: 'unset',
-    width: 'unset',
-    opacity: '25%',
   },
 }));
 
@@ -83,16 +66,13 @@ export const Watchlist = () => {
       </div>
       <Grid container spacing={2}>
         {watchlist?.titles?.map((title) => (
-          <Grid key={title._id} item xs={6} sm={4} md={3} xl={2}>
+          <Grid key={title._id} item xs={12} sm={6} md={4} lg={3} xl={2}>
             <TitleCard title={title} />
           </Grid>
         ))}
-        <Grid item xs={6} sm={4} md={3} xl={2}>
-          <Paper
-            onClick={handleAddTitle}
-            className={clsx(classes.paper, classes.addTitleCard)}
-          >
-            <AddCircleOutlineIcon className={classes.addTitleIcon} />
+        <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+          <Paper onClick={handleAddTitle} className='card add-title-card'>
+            <AddCircleOutlineIcon className='add-title-icon' />
           </Paper>
         </Grid>
       </Grid>

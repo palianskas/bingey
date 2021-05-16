@@ -1,10 +1,80 @@
-.center{
-    text-align: center;
-}
-.card{
-    aspect-ratio: 5/7;
+$lgBreakpoint: 1399px;
+$xsBreakpoint: 599px;
+
+.card {
+  aspect-ratio: 1/1.618;
+  border: 1px solid lightgray;
 }
 
-.media{
-    padding-top: 80%;
+.card-action-area {
+  height: 100%;
+}
+
+.card-media {
+  height: 70%;
+}
+
+.card-content {
+  height: 30%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-content-name {
+  font-size: 1.75em !important;
+}
+
+.card-content-release-date {
+  font-size: 1.25em !important;
+}
+
+.card-content-genres {
+  font-size: 1.25em !important;
+  opacity: 67%;
+  padding-bottom: 2em;
+}
+
+.add-title-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+  background-color: lightgray !important;
+}
+
+.add-title-icon {
+  height: unset !important;
+  width: unset !important;
+  opacity: 25%;
+}
+
+@media (max-width: #{$lgBreakpoint}) {
+  .card-content-name {
+    font-size: 1.75em !important;
+  }
+
+  .card-content-release-date {
+    font-size: 1.125em !important;
+  }
+
+  .card-content-genres {
+    font-size: 1em !important;
+  }
+}
+
+@media (max-width: #{$xsBreakpoint}) {
+  .card-content-name {
+    font-size: 1.75em !important;
+  }
+
+  .card-content-release-date {
+    font-size: 1.25em !important;
+  }
+
+  .card-content-genres {
+    font-size: 1.25em !important;
+  }
 }
