@@ -3,17 +3,50 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:8080';
 
 const formatStringForSearch = (value) => {
-  return value.toLowerCase().replace(' ', '+');
+  return value.trim().toLowerCase().replace(/\s+/g, '+');
 };
 
-const search = async (queryString) => {
-  queryString = formatStringForSearch(queryString);
-  try {
-    return (await axios.get(`${BASE_URL}/search?q=${queryString}`)).data;
-  } catch (error) {
-    // handle error
-  }
+const searchResultCache = {};
+
+const makeSearchRequestCreator = () => {
+  let cancelToken;
+
+  return async (queryString) => {
+    queryString = formatStringForSearch(queryString);
+
+    if (queryString.length < 1) {
+      return [];
+    }
+
+    if (cancelToken) {
+      cancelToken.cancel();
+    }
+
+    cancelToken = axios.CancelToken.source();
+
+    try {
+      if (searchResultCache[queryString]) {
+        return searchResultCache[queryString];
+      }
+
+      const res = await axios.get(`${BASE_URL}/?q=${queryString}`, {
+        cancelToken: cancelToken.token,
+      });
+
+      const result = res.data.results;
+
+      searchResultCache[queryString] = result;
+
+      return result;
+    } catch (error) {
+      if (!axios.isCancel(error)) {
+        return [];
+      }
+    }
+  };
 };
+
+const search = makeSearchRequestCreator();
 
 const createTitle = async (title) => {
   try {

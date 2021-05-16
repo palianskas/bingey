@@ -1,4 +1,17 @@
+$height: 8em;
+$width: 25em;
+
 .dropdown {
   position: absolute;
   top: 29px;
+  overflow-y: auto;
+  max-height: 5 * $height + 0.33em !important;
+}
+
+.dropdown-alt-item {
+  display: flex;
+  width: $width !important;
+  height: $height !important;
+  justify-content: center;
+  align-items: center;
 }

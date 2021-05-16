@@ -24,12 +24,12 @@ $smBreakpoint: 600px;
 
 .inputRoot {
   color: inherit !important;
+  width: 100% !important;
 }
 
 .inputBase {
   padding: 5px 5px 5px 0 !important;
   padding-left: 40px !important;
-  width: 100% !important;
 }
 
 @media (min-width: #{$smBreakpoint}) {
@@ -41,9 +41,15 @@ $smBreakpoint: 600px;
   .inputBase {
     transition: width 0.25s ease-out 0.3s;
     width: 12ch !important;
+
     &:focus {
-      transition-delay: 0s;
       width: 22.25em !important;
+      transition-delay: 0s;
     }
+  }
+
+  .input-base-open {
+    transition-delay: 0s;
+    width: 22.25em !important;
   }
 }

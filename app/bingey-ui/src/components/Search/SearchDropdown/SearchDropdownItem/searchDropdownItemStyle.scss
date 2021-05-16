@@ -1,9 +1,8 @@
+$smBreakpoint: 600px;
 $height: 8em;
 $width: 25em;
 
-$smBreakpoint: 600px;
-
-.dropdown-item {
+.search-dropdown-item {
   height: $height;
   width: $width !important;
   padding: 0 !important;
@@ -11,21 +10,31 @@ $smBreakpoint: 600px;
   cursor: pointer;
 }
 
-.text {
+.search-dropdown-text {
   margin: auto 0 !important;
   padding: 1em;
 }
 
-.primary {
+.search-dropdown-primary {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.secondary {
+.search-dropdown-secondary {
   opacity: 50%;
 }
 
-.image {
+.search-dropdown-image {
   height: $height;
+  max-width: $height / 1.5;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
+
+@media (max-width: #{$smBreakpoint}) {
+  .search-dropdown-item {
+    width: 80vw !important;
+  }
 }

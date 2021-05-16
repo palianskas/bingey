@@ -2,53 +2,46 @@ import React, { useState, useRef } from 'react';
 import { InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
+
+import api from 'utils/api';
+
 import { SearchDropdown } from './SearchDropdown/SearchDropdown';
 
 import './searchStyle.scss';
 
+const debouncedApiSearch = AwesomeDebouncePromise(api.search, 500);
+
 export const Search = () => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const [results, setResults] = useState(null);
+  const [titles, setTitles] = useState(null);
+  const [isQueryInProgress, setIsQueryInProgress] = useState(false);
 
   const searchRef = useRef(null);
 
   const handleOpenDropdown = () => {
-    setResults([
-      {
-        _id: 1,
-        name:
-          'Night of the Day of the Dawn of the Son of the Bride of the Return of the Revenge of the Terror of the Attack of the Evil, Mutant, Hellbound, Flesh-Eating Subhumanoid Zombified Living Dead, Part 3',
-        releaseDate: '2020-20-20',
-        imageUrl:
-          'https://static.bunnycdn.ru/i/cache/images/8/81/818f8f4c10aa94ec4ac96f2677aca0cb.jpg-w380',
-      },
-      {
-        _id: 2,
-        name: 'first',
-        releaseDate: '2020-20-20',
-        imageUrl:
-          'https://m.media-amazon.com/images/M/MV5BMjM4ZTVkODctNGZhNC00NWY5LWJkMjEtYmI1ZDg2Yjg2NDQzXkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      },
-      {
-        _id: 3,
-        name: 'first',
-        releaseDate: '2020-20-20',
-        imageUrl:
-          'https://m.media-amazon.com/images/M/MV5BMjM4ZTVkODctNGZhNC00NWY5LWJkMjEtYmI1ZDg2Yjg2NDQzXkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      },
-      {
-        _id: 4,
-        name: 'first',
-        releaseDate: '2020-20-20',
-        imageUrl:
-          'https://m.media-amazon.com/images/M/MV5BMjM4ZTVkODctNGZhNC00NWY5LWJkMjEtYmI1ZDg2Yjg2NDQzXkEyXkFqcGdeQXVyNjcyNjcyMzQ@._V1_UX182_CR0,0,182,268_AL_.jpg',
-      },
-    ]);
     setIsOpenDropdown(true);
   };
 
   const handleCloseDropdown = () => {
     setIsOpenDropdown(false);
+    if (!searchRef.current?.value) {
+      setTitles(null);
+    }
+  };
+
+  const handleInputChange = async (event) => {
+    if (!titles && event.target.value.trim().length < 1) {
+      return;
+    }
+
+    setIsQueryInProgress(true);
+
+    const result = await debouncedApiSearch(event.target.value);
+
+    setTitles(result);
+
+    setIsQueryInProgress(false);
   };
 
   return (
@@ -61,17 +54,21 @@ export const Search = () => {
         placeholder='Search…'
         classes={{
           root: 'inputRoot',
-          input: 'inputBase',
+          input: `inputBase ${
+            !!searchRef.current?.value ? 'input-base-open' : ''
+          }`,
         }}
         inputProps={{ 'aria-label': 'search' }}
         autoComplete='off'
-        ref={searchRef}
+        inputRef={searchRef}
+        onChange={(event) => handleInputChange(event)}
         onClick={handleOpenDropdown}
         onBlur={() => setTimeout(handleCloseDropdown, 100)}
       />
       <SearchDropdown
         open={isOpenDropdown}
-        titles={results}
+        titles={titles}
+        isQueryInProgress={isQueryInProgress}
         onClose={handleCloseDropdown}
       />
     </div>
