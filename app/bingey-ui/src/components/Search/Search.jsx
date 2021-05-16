@@ -25,6 +25,9 @@ export const Search = () => {
 
   const handleCloseDropdown = () => {
     setIsOpenDropdown(false);
+    if (!searchRef.current?.value) {
+      setTitles(null);
+    }
   };
 
   const handleInputChange = async (event) => {
@@ -51,11 +54,13 @@ export const Search = () => {
         placeholder='Search…'
         classes={{
           root: 'inputRoot',
-          input: 'inputBase',
+          input: `inputBase ${
+            !!searchRef.current?.value ? 'input-base-open' : ''
+          }`,
         }}
         inputProps={{ 'aria-label': 'search' }}
         autoComplete='off'
-        ref={searchRef}
+        inputRef={searchRef}
         onChange={(event) => handleInputChange(event)}
         onClick={handleOpenDropdown}
         onBlur={() => setTimeout(handleCloseDropdown, 100)}

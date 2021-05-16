@@ -41,9 +41,15 @@ $smBreakpoint: 600px;
   .inputBase {
     transition: width 0.25s ease-out 0.3s;
     width: 12ch !important;
+
     &:focus {
-      transition-delay: 0s;
       width: 22.25em !important;
+      transition-delay: 0s;
     }
+  }
+
+  .input-base-open {
+    transition-delay: 0s;
+    width: 22.25em !important;
   }
 }
