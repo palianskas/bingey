@@ -1,13 +1,27 @@
+const ASCENDING_ORDER = ['ASC', 'asc'];
+
 const compareValues = (x, y) => {
   return x < y ? -1 : x == y ? 0 : 1;
 };
 
 const compare = (x, y, fields) => {
-  const comparisons = fields.map((field) => compareValues(x[field], y[field]));
+  let field;
+  let comparison;
 
-  return (
-    comparisons.find((comparison) => comparison == -1 || comparison == 1) ?? 0
-  );
+  for (let i = 0; i < fields.length; i++) {
+    field = fields[i];
+    comparison = compareValues(x[field.name], y[field.name]);
+
+    if (comparison != 0) {
+      if (ASCENDING_ORDER.includes(field.order)) {
+        return comparison;
+      }
+
+      return comparison * -1;
+    }
+  }
+
+  return 0;
 };
 
 const mergeSort = (values, fields) => {
@@ -57,7 +71,7 @@ const insertionSort = (values, fields) => {
   return values;
 };
 
-export const sort = (values, ...fields) => {
+export const sort = (values, fields) => {
   if (!values) {
     return null;
   }
