@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import { Snackbar } from '@material-ui/core';
 
@@ -12,10 +12,12 @@ import './addTitleToWatchlistStyle.scss';
 
 const formatTitle = (title) => {
   return {
+    _id: title._id,
     name: title.name,
     releaseDate: new Date(title.releaseDate).toLocaleDateString('lt-LT'),
     imageUrl: title.imageUrl,
     upcomingEpisode: title.upcomingEpisode,
+    genres: title.genres,
   };
 };
 
@@ -27,6 +29,7 @@ export const AddTitleToWatchlistController = ({ title }) => {
   const buttonRef = useRef('test');
 
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const loadWatchlist = async () => {
@@ -63,6 +66,8 @@ export const AddTitleToWatchlistController = ({ title }) => {
     }
 
     handleCloseDialog();
+
+    history.go(0);
   };
 
   return (
