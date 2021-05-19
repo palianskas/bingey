@@ -80,6 +80,10 @@ const createWatchlist = async (watchlist) => {
   }
 };
 
+const getTitleById = async (id) => {
+  return (await axios.get(`${BASE_URL}/titles/${id}`)).data;
+};
+
 export default {
   search,
   createTitle,
@@ -87,4 +91,5 @@ export default {
   getWatchlistById,
   addTitleToWatchlist,
   createWatchlist,
+  getTitleById,
 };
