@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, Button } from '@material-ui/core';
 
@@ -8,10 +9,19 @@ import AddIcon from '@material-ui/icons/Add';
 
 import TitleCard from 'components/Watchlist/TitleCard/TitleCard';
 import api from 'utils/api';
+import { sort } from 'utils/sorter';
+import { filter } from 'utils/filter';
+import { SortRow } from 'components/Watchlist/SortRow/SortRow';
+import { FilterRow } from 'components/Watchlist/FilterRow/FilterRow';
+import './Watchlist.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2),
+  },
+  paper: {
+    textAlign: 'center',
+    backgroundColor: '#c4c4c4',
   },
   header: {
     display: 'flex',
@@ -27,12 +37,36 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  addTitleCard: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    aspectRatio: 5 / 7,
+    cursor: 'pointer',
+  },
+  addTitleIcon: {
+    height: 'unset',
+    width: 'unset',
+    opacity: '25%',
+  },
 }));
 
 export const Watchlist = () => {
   const classes = useStyles();
 
   const [watchlist, setWatchlist] = useState(null);
+
+  const sorters = [
+    { id: 'name', name: 'Name' },
+    { id: 'releaseDate', name: 'Release Date' },
+    { id: 'upcomingReleaseDate', name: 'Upcoming' },
+  ];
+
+  const filters = [
+    { id: 'genres', name: 'Genres' },
+    { id: 'directors', name: 'Directors' },
+    { id: 'isMovie', name: 'Type' },
+  ];
 
   const { id } = useParams();
 
@@ -45,6 +79,30 @@ export const Watchlist = () => {
 
   const handleAddTitle = () => {
     document.getElementById('searchBar').focus();
+  };
+
+  const handleSorterChange = (field, direction) => {
+    if (field) {
+      setWatchlist({
+        ...watchlist,
+        titles: sort(watchlist.titles, [
+          { id: field.id, direction: direction },
+        ]),
+      });
+    } else {
+      loadWatchlist();
+    }
+  };
+
+  const handleFiltersChange = (filters) => {
+    if (filters.length > 0) {
+      // filters.map((filter) =>
+      //   filter.id === 'isMovie' ? (filter.value = true) : (filter.value = false)
+      // );
+      setWatchlist({ ...watchlist, titles: filter(watchlist.titles, filters) });
+    } else {
+      loadWatchlist();
+    }
   };
 
   return (
@@ -63,6 +121,14 @@ export const Watchlist = () => {
         >
           Add title
         </Button>
+      </div>
+      <div className={'sort-filter-row'}>
+        <FilterRow
+          filters={filters}
+          valuesToFilter={watchlist?.titles}
+          onFiltersChange={handleFiltersChange}
+        />
+        <SortRow sorters={sorters} onActiveSorterChange={handleSorterChange} />
       </div>
       <Grid container spacing={2}>
         {watchlist?.titles?.map((title) => (

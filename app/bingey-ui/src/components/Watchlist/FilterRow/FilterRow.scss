@@ -1,0 +1,23 @@
+.filter-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 15px 0 15px 0;
+}
+
+.filter-explainer{
+  font-weight: 900 !important;
+  margin: 10px !important;
+  font-size: 1.25rem !important;
+}
+
+.filter-input-container{
+  min-width: 200px !important;
+  margin: 0 10px 0 10px !important;
+}
+
+.filter-input{
+  display: block !important;
+}
+
+
