@@ -7,17 +7,17 @@ const compareValues = (x, y) => {
 const compare = (x, y, fields) => {
   let field;
   let comparison;
-
   for (let i = 0; i < fields.length; i++) {
     field = fields[i];
-    comparison = compareValues(x[field.name], y[field.name]);
+
+    comparison = compareValues(x[field.id], y[field.id]);
 
     if (comparison != 0) {
-      if (ASCENDING_ORDER.includes(field.order)) {
-        return comparison;
+      if (ASCENDING_ORDER.includes(field.direction)) {
+        return comparison * -1;
       }
 
-      return comparison * -1;
+      return comparison;
     }
   }
 

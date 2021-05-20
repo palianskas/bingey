@@ -1,0 +1,33 @@
+.sort-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px 0 15px 0;
+  padding: 8px;
+}
+
+.sort-input{
+  width: 100%;
+  padding-right: 8px !important;
+
+  .MuiInputBase-root{
+    svg{
+      display: none;
+    }
+  }
+}
+
+.MuiSvgIcon-root{
+  &.desc{
+    transform: rotateZ(0deg);
+    transition: all 0.4s ease;
+  }
+
+  &.asc{
+    transform: rotateZ(-180deg);
+    transition: all 0.4s ease;
+  }
+}
+
+

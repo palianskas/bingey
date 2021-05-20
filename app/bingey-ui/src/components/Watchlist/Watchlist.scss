@@ -1,0 +1,11 @@
+.sort-filter-row{
+  display: flex;
+  flex-direction: row;
+  .filter-container{
+    width: 75%;
+    margin-right: 10px;
+  }
+  .sort-container{
+    width: 25%;
+  }
+}

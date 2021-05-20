@@ -51,8 +51,8 @@ export const TitleDialog = ({ title, onClose, open }) => {
           <Grid item xs={6}>
             <span className='bold'>
               {fullTitle?.isMovie
-                ? fullTitle?.releaseDate.split('T')[0]
-                : fullTitle?.upcomingEpisode?.releaseDate.split('T')[0]}
+                ? fullTitle?.releaseDate?.split('T')[0]
+                : fullTitle?.upcomingEpisode?.releaseDate?.split('T')[0]}
             </span>
           </Grid>
           <Grid item xs={6}>
@@ -68,7 +68,7 @@ export const TitleDialog = ({ title, onClose, open }) => {
                 <span>Released: </span>
                 <br />
                 <span className='bold'>
-                  {fullTitle?.releaseDate.split('T')[0]}
+                  {fullTitle?.releaseDate?.split('T')[0]}
                 </span>
               </Typography>
             )}

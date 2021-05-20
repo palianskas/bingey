@@ -18,6 +18,7 @@ const formatTitle = (title) => {
     imageUrl: title.imageUrl,
     upcomingEpisode: title.upcomingEpisode,
     genres: title.genres,
+    directors: title.directors,
   };
 };
 

@@ -22,6 +22,26 @@ const getWatchlistById = async (req, res) => {
   }
 };
 
+const removeTitle = async (req, res) => {
+  try {
+    const watchlist = await Watchlist.findById(req.params.id);
+    watchlist.titles.map((title, index) => {
+      if (title._id.toString() === req.params.titleId) {
+        watchlist.titles.splice(index, 1);
+      }
+    });
+    watchlist.save((err, watchlist) => {
+      if (err) {
+        res.status(400).json({ errors: err });
+        return;
+      }
+      res.json(watchlist);
+    });
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 const addTitleToWatchlist = async (req, res) => {
   try {
     const errors = validationResult(req).errors;
@@ -141,6 +161,7 @@ const parseTitle = (req) => {
     upcomingEpisode: req.body.upcomingEpisode,
     imageUrl: req.body.imageUrl,
     genres: req.body.genres,
+    directors: req.body.directors,
   });
 };
 
@@ -151,4 +172,5 @@ module.exports = {
   createWatchlist: createWatchlist,
   addTitleToWatchlist: addTitleToWatchlist,
   deleteWatchlist: deleteWatchlist,
+  removeTitle: removeTitle,
 };

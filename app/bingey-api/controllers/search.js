@@ -9,7 +9,7 @@ const parseTitle = (resultTitle) => {
     _id: resultTitle._id,
     isCustom: resultTitle.isCustom,
     name: resultTitle.name,
-    releaseDate: resultTitle.releaseDate.toLocaleString('lt-LT').split(' ')[0],
+    releaseDate: resultTitle.releaseDate?.toLocaleString('lt-LT').split(' ')[0],
     directors: resultTitle.directors,
     genres: resultTitle.genres,
     isMovie: resultTitle.isMovie,
@@ -17,11 +17,11 @@ const parseTitle = (resultTitle) => {
     seasonEpisodes: resultTitle.seasonEpisodes,
     latestEpisode: {
       ...resultTitle.latestEpisode,
-      releaseDate: resultTitle.latestEpisode.releaseDate.toLocaleString('lt-LT').split(' ')[0],
+      releaseDate: resultTitle.latestEpisode.releaseDate?.toLocaleString('lt-LT').split(' ')[0],
     },
     upcomingEpisode: {
       ...resultTitle.upcomingEpisode,
-      releaseDate: resultTitle.upcomingEpisode.releaseDate.toLocaleString('lt-LT').split(' ')[0],
+      releaseDate: resultTitle.upcomingEpisode.releaseDate?.toLocaleString('lt-LT').split(' ')[0],
     },
     plot: resultTitle.plot,
     imageUrl: resultTitle.imageUrl,
