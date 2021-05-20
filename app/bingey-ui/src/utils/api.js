@@ -72,6 +72,13 @@ const addTitleToWatchlist = async (id, title) => {
   }
 };
 
+const removeTitle = async (id, title) => {
+  try {
+    return (await axios.put(`${BASE_URL}/watchlists/${id}/remove/${title._id}`))
+      .data;
+  } catch (error) {}
+};
+
 const createWatchlist = async (watchlist) => {
   try {
     return (await axios.post(`${BASE_URL}/watchlists`, watchlist)).data;
@@ -91,5 +98,6 @@ export default {
   getWatchlistById,
   addTitleToWatchlist,
   createWatchlist,
+  removeTitle,
   getTitleById,
 };

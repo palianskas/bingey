@@ -19,7 +19,7 @@ export const SearchDropdownItem = ({ item, onClick }) => {
           }
           secondary={
             <Typography variant='h5' className='search-dropdown-secondary'>
-              {item?.releaseDate.split('-')[0]}
+              {item?.releaseDate?.split('-')[0]}
             </Typography>
           }
         />

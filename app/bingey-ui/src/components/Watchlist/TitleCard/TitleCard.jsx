@@ -8,10 +8,13 @@ import {
 } from '@material-ui/core';
 
 import { TitleDialog } from 'components/Watchlist/TitleDialog/TitleDialog';
+import HighlightOffSharpIcon from '@material-ui/icons/HighlightOffSharp';
 
 import './titleCardStyle.scss';
+import ArrowDownwardSharpIcon from '@material-ui/icons/ArrowDownwardSharp';
+import IconButton from '@material-ui/core/IconButton';
 
-export default function TitleCard({ title }) {
+export default function TitleCard({ title, onTitleRemove }) {
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = () => {
@@ -26,6 +29,16 @@ export default function TitleCard({ title }) {
     <div>
       <Card className='card' elevation={0}>
         <CardActionArea onClick={handleOpenDialog} className='card-action-area'>
+          <IconButton
+            className={'title-delete-button'}
+            aria-label='delete'
+            size='medium'
+            onClick={() => {
+              onTitleRemove(title);
+            }}
+          >
+            <HighlightOffSharpIcon fontSize='default' />
+          </IconButton>
           <CardMedia
             component='img'
             alt={`${title?.name} poster`}

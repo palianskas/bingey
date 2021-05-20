@@ -71,14 +71,19 @@ export const Watchlist = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const loadWatchlist = async () => {
-      setWatchlist(await api.getWatchlistById(id));
-    };
     loadWatchlist();
   }, [id]);
 
+  const loadWatchlist = async () => {
+    setWatchlist(await api.getWatchlistById(id));
+  };
+
   const handleAddTitle = () => {
     document.getElementById('searchBar').focus();
+  };
+
+  const handleTitleRemove = async (title) => {
+    setWatchlist(await api.removeTitle(watchlist._id, title));
   };
 
   const handleSorterChange = (field, direction) => {
@@ -133,7 +138,7 @@ export const Watchlist = () => {
       <Grid container spacing={2}>
         {watchlist?.titles?.map((title) => (
           <Grid key={title._id} item xs={12} sm={6} md={4} lg={3} xl={2}>
-            <TitleCard title={title} />
+            <TitleCard title={title} onTitleRemove={handleTitleRemove} />
           </Grid>
         ))}
         <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
